@@ -717,6 +717,11 @@ table.grid .name a:hover {
     display: none;
 }
 
+/* painel do Database tem mais campos: espaçamento menor evita overflow */
+#search-db {
+    gap: 12px;
+}
+
 .search h3 {
     margin: 0 0 6px;
     font-family: 'Poppins';
@@ -2243,6 +2248,122 @@ select.f:focus {
     margin: 0;
 }
 
+/* ----- POP-UP: envio de newsletter em progresso ----- */
+.send-anim {
+    width: 64px;
+    height: 64px;
+    margin: 2px auto 14px;
+    border-radius: 50%;
+    background: var(--blue-soft);
+    color: var(--blue);
+    display: grid;
+    place-items: center;
+    animation: sendpulse 1.6s ease-in-out infinite;
+}
+
+.send-anim svg {
+    width: 32px;
+    height: 32px;
+}
+
+@keyframes sendpulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(45, 127, 240, .35);
+    }
+    50% {
+        box-shadow: 0 0 0 12px rgba(45, 127, 240, 0);
+    }
+}
+
+.send-cia {
+    text-align: center;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--navy);
+}
+
+.send-nl {
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    margin: 2px 0 22px;
+}
+
+.send-progress {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 0 22px;
+}
+
+.send-pct {
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--blue-600);
+    flex: 0 0 auto;
+    min-width: 84px;
+    text-align: right;
+}
+
+.send-progress .bar {
+    flex: 1;
+    height: 10px;
+    border-radius: 999px;
+    background: #E6ECF3;
+    overflow: hidden;
+}
+
+.send-progress .bar i {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue), var(--blue-600));
+    border-radius: 999px;
+}
+
+.send-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.send-stats > div {
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 10px 13px;
+}
+
+.send-stats span {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.send-stats b {
+    font-family: 'Poppins';
+    font-size: 17px;
+    color: var(--navy);
+}
+
+.send-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 16px;
+}
+
+.send-note svg {
+    width: 13px;
+    height: 13px;
+}
+
 </style>
 </head>
 <body>
@@ -2455,7 +2576,7 @@ select.f:focus {
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="20" x2="6" y2="13"/><line x1="12" y1="20" x2="12" y2="8"/><line x1="18" y1="20" x2="18" y2="11"/></svg>
                                     Statistics
                                 </button>
-                                <button class="tbtn send" title="Envia a newsletter">
+                                <button class="tbtn send" title="Envia a newsletter" onclick="openPopup('sending')">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                                     Send
                                 </button>
@@ -3330,6 +3451,37 @@ select.f:focus {
                 <button class="fbtn primary">Insert</button>
             </div>
         </div>
+
+        <!-- modo SENDING (envio de newsletter em progresso) -->
+        <div id="popSending" style="display:none">
+            <div class="popup-body">
+                <div class="send-anim">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </div>
+                <div class="send-cia">The Archdiocese of Miami</div>
+                <div class="send-nl">Weekly Newsletter — 2026-06-18 15:35:34</div>
+
+                <div class="send-progress">
+                    <div class="send-pct">47.6%</div>
+                    <div class="bar"><i style="width:47.6%"></i></div>
+                </div>
+
+                <div class="send-stats">
+                    <div><span>Total in list</span><b>7,878</b></div>
+                    <div><span>Total sent</span><b>3,750</b></div>
+                    <div><span>Started</span><b>17:10:23</b></div>
+                    <div><span>Refreshed</span><b>17:10:33</b></div>
+                </div>
+
+                <div class="send-note">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                    This window refreshes automatically while the newsletter is being sent.
+                </div>
+            </div>
+            <div class="popup-foot">
+                <button class="fbtn ghost" onclick="closePopup()">Close</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -3547,7 +3699,9 @@ document.getElementById('tgl2').onclick = () => document.getElementById('search2
 function openPopup(mode) {
     document.getElementById('popUpload').style.display = mode === 'upload' ? 'block' : 'none';
     document.getElementById('popPreview').style.display = mode === 'preview' ? 'block' : 'none';
-    document.getElementById('popTitle').textContent = mode === 'upload' ? 'Upload to folder' : 'Image preview';
+    document.getElementById('popSending').style.display = mode === 'sending' ? 'block' : 'none';
+    const titles = { upload: 'Upload to folder', preview: 'Image preview', sending: 'Sending e-mail' };
+    document.getElementById('popTitle').textContent = titles[mode] || '';
     document.getElementById('popup').classList.add('show');
 }
 function closePopup() {
