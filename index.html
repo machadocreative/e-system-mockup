@@ -120,7 +120,7 @@ body {
     flex: 0 0 58px;
     display: flex;
     align-items: center;
-    background: linear-gradient(120deg, var(--navy-deep), var(--navy) 55%, #1E4D7B);
+    background: linear-gradient(0deg, var(--navy-deep), var(--navy) 15%, #1E4D7B);
     color: #fff;
     padding: 0 20px;
     position: relative;
@@ -641,6 +641,11 @@ table.grid .name a:hover {
     align-items: center;
     gap: 5px;
     color: #94A3B8;
+    font-weight: 600;
+}
+
+.show-new {
+    color: #B7791F;
     font-weight: 600;
 }
 
@@ -1335,6 +1340,8 @@ table.grid .name a:hover {
 
 .kv-grid .lab {
     color: var(--muted);
+    background: var(--blue-soft);
+    padding-left: 12px;
 }
 
 .kv-grid .val {
@@ -1808,6 +1815,7 @@ select.f:focus {
     border-radius: 8px;
     background: var(--green);
     color: #fff;
+    text-decoration: none;
     cursor: pointer;
 }
 
@@ -2099,20 +2107,149 @@ select.f:focus {
     text-overflow: ellipsis;
 }
 
+/* ----- Formulários simples (Sender APIs, Change Password) ----- */
+.fcard {
+    max-width: 600px;
+    margin: 8px auto;
+    width: 100%;
+}
+
+.fcard .ftitle {
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--navy);
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.fgrid {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 14px 16px;
+    align-items: center;
+}
+
+.fgrid .l {
+    color: var(--navy);
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.fgrid .sub {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+}
+
+.f-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 24px;
+}
+
+/* ----- Import Emails (modernizado) ----- */
+.import-emails {
+    max-width: 720px;
+    margin: 4px auto;
+    width: 100%;
+}
+
+.import-emails h2 {
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--navy);
+    margin: 0 0 6px;
+}
+
+.import-emails .hint {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 22px;
+    line-height: 1.5;
+}
+
+.import-emails label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    margin: 0 0 6px;
+}
+
+.import-emails .field-block {
+    margin-bottom: 18px;
+}
+
+.import-emails textarea {
+    width: 100%;
+    min-height: 200px;
+    font: inherit;
+    font-size: 13px;
+    padding: 12px;
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    resize: vertical;
+}
+
+.import-emails textarea:focus,
+.import-emails input:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px var(--blue-soft);
+}
+
+/* ----- Tela de ferramenta desativada ----- */
+.removed {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.removed .r-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: #FDECEE;
+    color: #C41422;
+    display: grid;
+    place-items: center;
+}
+
+.removed .r-icon svg {
+    width: 32px;
+    height: 32px;
+}
+
+.removed h2 {
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--navy);
+    margin: 0 0 8px;
+}
+
+.removed p {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 0;
+}
+
 </style>
 </head>
 <body>
 
 <div class="mock-bar">
     <strong>e-system · Mockup (Modernizado)</strong>
-    <div class="screens">
-        <button data-s="login" onclick="setScreen('login')">Login</button>
-        <button data-s="dashboard" onclick="setScreen('dashboard')">Dashboard</button>
-        <button data-s="articles" class="active" onclick="setScreen('articles')">Articles</button>
-        <button data-s="articleform" onclick="setScreen('articleform')">Article Form</button>
-        <button data-s="newsletter" onclick="setScreen('newsletter')">Newsletter</button>
-        <button data-s="photos" onclick="setScreen('photos')">Photos</button>
-    </div>
+    <span style="color:#9DB4CE;font-size:13px;margin-left:14px">Navegue pelo menu lateral · clique no logo "e-system" para a tela inicial · Logout abre a tela de Login</span>
 </div>
 
 <div class="app">
@@ -2136,11 +2273,11 @@ select.f:focus {
                         <div class="ur">Web user</div>
                     </div>
                 </div>
-                <a class="actbtn pw">
+                <a class="actbtn pw" onclick="setScreen('changepw')">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><line x1="10.85" y1="12.15" x2="19" y2="4"/><line x1="18" y1="5" x2="20" y2="7"/><line x1="15" y1="8" x2="17" y2="10"/></svg>
                     Change Password
                 </a>
-                <a class="actbtn logout">
+                <a class="actbtn logout" onclick="setScreen('login')">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
                     Logout
                 </a>
@@ -2173,7 +2310,7 @@ select.f:focus {
                 </div>
                 <div class="grid-wrap">
                     <table class="grid">
-                        <thead><tr><th>Name</th><th>Title</th><th>Category</th><th>Show</th></tr></thead>
+                        <thead><tr><th>Name</th><th>Title</th><th>Category</th><th>Display</th></tr></thead>
                         <tbody id="rows"></tbody>
                     </table>
                 </div>
@@ -2528,7 +2665,7 @@ select.f:focus {
                         <input type="password" value="password">
                     </div>
                 </div>
-                <button class="login-submit" onclick="setScreen('articles')">Submit</button>
+                <button class="login-submit" onclick="setScreen('dashboard')">Submit</button>
                 <a class="forgot-link" onclick="loginView('forgot')">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/><circle cx="12" cy="16" r="1"/></svg>
                     Forgot Password?
@@ -2540,19 +2677,19 @@ select.f:focus {
         <div class="work" id="work-login" style="display:none;padding:0">
             <!-- hero (marketing modernizado) -->
             <div class="hero" id="login-hero">
-                <h1>An effective website plays a key role in reflecting your image to the world.</h1>
+                <h1>Welcome. Sharing your community's story has never been this simple.</h1>
                 <div class="props">
                     <div class="prop">
                         <span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                        It provides a good impression, putting your best face forward.
+                        Publish news, events, and bulletins in just a few clicks — no technical skills needed.
                     </div>
                     <div class="prop">
                         <span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                        It is a strong component in any marketing strategy.
+                        Keep your members informed and connected, anytime and from anywhere.
                     </div>
                     <div class="prop">
                         <span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-                        It is often your customers' first point of contact with you.
+                        One friendly place to manage everything your website needs.
                     </div>
                 </div>
                 <div class="cards">
@@ -2561,12 +2698,11 @@ select.f:focus {
                     <div class="wcard"><div class="wc-bar"></div><div class="wc-body"><i class="img"></i><i class="wide"></i><i></i></div></div>
                     <div class="wcard"><div class="wc-bar"></div><div class="wc-body"><i class="img"></i><i class="wide"></i><i></i></div></div>
                 </div>
-                <div class="tagline">Hand out a business card with a web address that you can trust.</div>
                 <div>
-                    <button class="portfolio">
+                    <a class="portfolio" href="https://www.parishmate.com/ip.php?pg=Portfolio" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><path d="M20 7h-7L11 5H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
                         Visit our Portfolio
-                    </button>
+                    </a>
                 </div>
             </div>
             <!-- forgot password -->
@@ -2682,6 +2818,464 @@ select.f:focus {
             </section>
         </div>
 
+        <!-- Database (Address Book) — lista -->
+        <div class="work" id="work-database" style="display:none">
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
+                    Database
+                    <div class="tools">
+                        <button class="btn-new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> New</button>
+                        <button class="toggle-search" onclick="document.getElementById('search-db').classList.toggle('hidden')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="15" y1="4" x2="15" y2="20"/></svg></button>
+                    </div>
+                </div>
+                <div class="grid-wrap">
+                    <table class="grid">
+                        <thead><tr><th>Name</th><th>City</th><th>State</th><th>Type</th></tr></thead>
+                        <tbody id="db-rows"></tbody>
+                    </table>
+                </div>
+                <div class="win-foot"><b>9</b>&nbsp;records</div>
+            </section>
+            <aside class="search" id="search-db">
+                <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search database</h3>
+                <div class="field"><label>Type</label><div class="row"><select><option>=</option></select><select><option>Church</option></select></div></div>
+                <div class="field"><label>Name</label><div class="row"><select><option>?*</option></select><input></div></div>
+                <div class="field"><label>Address</label><div class="row"><select><option>?*</option></select><input></div></div>
+                <div class="field"><label>City</label><div class="row"><select><option>?*</option></select><input></div></div>
+                <div class="field"><label>State</label><div class="row"><select><option>?*</option></select><input></div></div>
+                <div class="field"><label>Country</label><div class="row"><select><option>?*</option></select><input></div></div>
+                <div class="field"><label>ZIP</label><div class="row"><select><option>?*</option></select><input></div></div>
+                <div class="btn-row"><button class="btn ghost">Reset</button><button class="btn primary">Search</button></div>
+            </aside>
+        </div>
+
+        <!-- Events — lista -->
+        <div class="work" id="work-events" style="display:none">
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Events
+                    <div class="tools">
+                        <button class="btn-new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> New</button>
+                        <button class="toggle-search" onclick="document.getElementById('search-ev').classList.toggle('hidden')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="15" y1="4" x2="15" y2="20"/></svg></button>
+                    </div>
+                </div>
+                <div class="grid-wrap">
+                    <table class="grid">
+                        <thead><tr><th>Name</th><th>Calendar</th><th>Category</th><th>Display</th></tr></thead>
+                        <tbody id="ev-rows"></tbody>
+                    </table>
+                </div>
+                <div class="win-foot"><b>200</b>&nbsp;records in <b>10</b> pages
+                    <div class="pager"><span class="cur">1</span><span>2</span><span>3</span><span>4</span><span>&raquo;</span></div>
+                </div>
+            </section>
+            <aside class="search" id="search-ev">
+                <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search database</h3>
+                <div class="field"><label>Category</label><div class="row"><select><option>=</option></select><select><option>Community</option></select></div></div>
+                <div class="field"><label>Name</label><div class="row"><select><option>?*</option></select><input></div></div>
+                <div class="field"><label>Calendar</label><div class="row"><select><option>&gt;=</option></select><input placeholder="mm/dd/yyyy"></div></div>
+                <div class="field"><label>Display</label><div class="row"><select><option>=</option></select><select><option>Yes</option></select></div></div>
+                <div class="btn-row"><button class="btn ghost">Reset</button><button class="btn primary">Search</button></div>
+            </aside>
+        </div>
+
+        <!-- Site Map (Intl Menus) — lista -->
+        <div class="work" id="work-sitemap" style="display:none">
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    Site Map
+                    <div class="tools">
+                        <button class="btn-new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> New</button>
+                        <button class="toggle-search" onclick="document.getElementById('search-sm').classList.toggle('hidden')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="15" y1="4" x2="15" y2="20"/></svg></button>
+                    </div>
+                </div>
+                <div class="grid-wrap">
+                    <table class="grid">
+                        <thead><tr><th>Menu Item</th><th>Label 1</th><th>op1</th></tr></thead>
+                        <tbody id="sm-rows"></tbody>
+                    </table>
+                </div>
+                <div class="win-foot"><b>128</b>&nbsp;records in <b>5</b> pages
+                    <div class="pager"><span class="cur">1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+                </div>
+            </section>
+            <aside class="search" id="search-sm">
+                <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search database</h3>
+                <div class="field"><label>Menu Item</label><div class="row"><select><option>?*</option></select><input></div></div>
+                <div class="field"><label>op1</label><div class="row"><select><option>?*</option></select><input></div></div>
+                <div class="field"><label>op2</label><div class="row"><select><option>?*</option></select><input></div></div>
+                <div class="field"><label>op3</label><div class="row"><select><option>?*</option></select><input></div></div>
+                <div class="field"><label>op4</label><div class="row"><select><option>?*</option></select><input></div></div>
+                <div class="btn-row"><button class="btn ghost">Reset</button><button class="btn primary">Search</button></div>
+            </aside>
+        </div>
+
+        <!-- Newsletters (Messages) — lista -->
+        <div class="work" id="work-messages" style="display:none">
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+                    Newsletters
+                    <div class="tools">
+                        <button class="btn-new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> New</button>
+                        <button class="toggle-search" onclick="document.getElementById('search-msg').classList.toggle('hidden')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="15" y1="4" x2="15" y2="20"/></svg></button>
+                    </div>
+                </div>
+                <div class="grid-wrap">
+                    <table class="grid">
+                        <thead><tr><th>Name</th><th>Message</th><th>Groups</th><th>Date</th></tr></thead>
+                        <tbody id="msg-rows"></tbody>
+                    </table>
+                </div>
+                <div class="win-foot"><b>202</b>&nbsp;records in <b>8</b> pages
+                    <div class="pager"><span class="cur">1</span><span>2</span><span>3</span><span>4</span><span>&raquo;</span></div>
+                </div>
+            </section>
+            <aside class="search" id="search-msg">
+                <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search database</h3>
+                <div class="field"><label>Name</label><div class="row"><select><option>?*</option></select><input></div></div>
+                <div class="field"><label>Date</label><div class="row"><select><option>?*</option></select><input placeholder="mm/dd/yyyy"></div></div>
+                <div class="field"><label>Category</label><div class="row"><select><option>*?*</option></select><select><option></option></select></div></div>
+                <div class="btn-row"><button class="btn ghost">Reset</button><button class="btn primary">Search</button></div>
+            </aside>
+        </div>
+
+        <!-- Mailing List — lista -->
+        <div class="work" id="work-mailinglist" style="display:none">
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+                    Mailing List
+                    <div class="tools">
+                        <button class="btn-new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> New</button>
+                        <button class="toggle-search" onclick="document.getElementById('search-ml').classList.toggle('hidden')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="15" y1="4" x2="15" y2="20"/></svg></button>
+                    </div>
+                </div>
+                <div class="grid-wrap">
+                    <table class="grid">
+                        <thead><tr><th>E-mail</th><th>Name</th><th>Groups</th><th>Date Subscribed</th><th>Status</th></tr></thead>
+                        <tbody id="ml-rows"></tbody>
+                    </table>
+                </div>
+                <div class="win-foot"><b>20,230</b>&nbsp;records in <b>750</b> pages
+                    <div class="pager"><span class="cur">1</span><span>2</span><span>3</span><span>4</span><span>&raquo;</span></div>
+                </div>
+            </section>
+            <aside class="search" id="search-ml">
+                <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search database</h3>
+                <div class="field"><label>E-mail</label><div class="row"><select><option>?*</option></select><input></div></div>
+                <div class="field"><label>Name</label><div class="row"><select><option>?*</option></select><input></div></div>
+                <div class="field"><label>Status</label><div class="row"><select><option>=</option></select><select><option>Subscribed</option></select></div></div>
+                <div class="field"><label>Date Subscribed</label><div class="row"><select><option>From</option></select><input placeholder="mm/dd/yyyy"></div></div>
+                <div class="field"><label>Category</label><div class="row"><select><option>*?*</option></select><select><option></option></select></div></div>
+                <div class="btn-row"><button class="btn ghost">Reset</button><button class="btn primary">Search</button></div>
+            </aside>
+        </div>
+
+        <!-- Sender APIs — formulário -->
+        <div class="work" id="work-senderapis" style="display:none">
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                    Sender APIs
+                </div>
+                <div class="form-body">
+                    <div class="fcard">
+                        <div class="ftitle">General Info</div>
+                        <div class="fgrid">
+                            <span class="l">Send username</span><input class="f">
+                            <span class="l">SMTP server</span><input class="f">
+                            <span class="l">Send password</span><input class="f" type="password">
+                            <span class="l">Confirm password</span><input class="f" type="password">
+                            <span class="l">From name</span><input class="f" value="The Archdiocese of Miami">
+                            <span class="l">From / to</span><input class="f">
+                            <span class="l">Reply to</span><input class="f">
+                            <span class="l">SMTP port / SSL</span><input class="f" value="25">
+                            <span class="l">Pop3</span><input class="f">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-foot">
+                    <span style="flex:1"></span>
+                    <button class="fbtn ghost">Reset</button>
+                    <button class="fbtn ghost">Cancel</button>
+                    <button class="fbtn primary">Save</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Import Emails — formulário (incorporado ao Mail Center) -->
+        <div class="work" id="work-importemails" style="display:none">
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+                    Import Emails
+                </div>
+                <div class="form-body">
+                    <div class="import-emails">
+                        <h2>Import Emails</h2>
+                        <p class="hint">Paste your list of email addresses below. You can separate them with commas, semicolons, spaces, dashes or line breaks.</p>
+                        <div class="field-block">
+                            <label>Categories</label>
+                            <input class="f" placeholder="e.g. Parishioners, Volunteers">
+                        </div>
+                        <div class="field-block">
+                            <label>Emails</label>
+                            <textarea placeholder="jane@example.com, john@example.com …"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-foot">
+                    <span style="flex:1"></span>
+                    <button class="fbtn primary">Add Emails</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Change My Password — formulário -->
+        <div class="work" id="work-changepw" style="display:none">
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    Change My Password
+                </div>
+                <div class="form-body">
+                    <div class="fcard">
+                        <div class="ftitle">Change My Password</div>
+                        <div class="fgrid">
+                            <span class="l">ID</span><input class="f" value="GABRIELA@ATIMO.US">
+                            <span class="l">Old password</span><input class="f" type="password">
+                            <span class="l">New password</span><input class="f" type="password">
+                            <span class="l">Confirm password</span><input class="f" type="password">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-foot">
+                    <span style="flex:1"></span>
+                    <button class="fbtn ghost">Reset</button>
+                    <button class="fbtn primary">Submit</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Ferramenta desativada (Customer Service / Import XLS / etc.) -->
+        <div class="work" id="work-removed" style="display:none">
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                    <span id="removed-title">Customer Service</span>
+                </div>
+                <div class="removed">
+                    <div>
+                        <div class="r-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+                        <h2>This tool has been removed from e-system.</h2>
+                        <p>Please use the newer platform for this feature.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Database — registro (abas) -->
+        <div class="work" id="work-dbrecord" style="display:none">
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
+                    Database
+                </div>
+                <div class="form-body">
+                    <div class="tabs" id="db-tabs">
+                        <button class="tab active" data-pane="db-ginfo">General Info</button>
+                        <button class="tab" data-pane="db-sub">Subcontacts</button>
+                        <button class="tab" data-pane="db-com">Comercial</button>
+                        <button class="tab" data-pane="db-notes">Notes</button>
+                        <button class="tab" data-pane="db-custom">Custom</button>
+                    </div>
+                    <div class="form-name"><span class="nl">Name</span><span class="nv">Corpus Christi Catholic Parish</span></div>
+
+                    <div class="pane active" data-pane="db-ginfo">
+                        <div class="kv-grid">
+                            <span class="lab">Type</span><span class="val">Church</span>
+                            <span class="lab">Address</span><span class="val">3220 NW 7th Ave</span>
+                            <span class="lab">City</span><span class="val">Miami</span>
+                            <span class="lab">State / ZIP</span><span class="val">FL / 33127</span>
+                            <span class="lab">Country</span><span class="val">USA</span>
+                            <span class="lab">Phone</span><span class="val">(305) 635-1331</span>
+                            <span class="lab">Email</span><span class="val">corpuschristi@adom.org</span>
+                            <span class="lab">Website</span><span class="val">corpuschristimiami.org</span>
+                        </div>
+                    </div>
+                    <div class="pane" data-pane="db-sub"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg><div>Aba <b>Subcontacts</b> — contatos vinculados</div></div></div>
+                    <div class="pane" data-pane="db-com"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><div>Aba <b>Comercial</b> — dados comerciais</div></div></div>
+                    <div class="pane" data-pane="db-notes"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><div>Aba <b>Notes</b> — anotações</div></div></div>
+                    <div class="pane" data-pane="db-custom">
+                        <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start">
+                            <div>
+                                <div style="width:340px;height:170px;border-radius:10px;border:1px solid var(--border);background:linear-gradient(160deg,#9ecbf0,#cfe6f7 55%,#e7d6ad);display:grid;place-items:center;color:#3a4a5a;font-size:13px;font-weight:600">⛪ Corpus Christi</div>
+                                <div style="font-size:12px;color:var(--muted);margin-top:6px;text-align:center">CHURCH_Corpus_Christi.jpg</div>
+                            </div>
+                            <div class="kv-grid" style="max-width:300px">
+                                <span class="lab">Latitude</span><span class="val">25.806875</span>
+                                <span class="lab">Longitude</span><span class="val">-80.20742</span>
+                                <span class="lab">Video ID</span><span class="val">—</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-foot">
+                    <span style="flex:1"></span>
+                    <button class="fbtn primary">Edit</button>
+                    <button class="fbtn danger">Delete</button>
+                    <button class="fbtn ghost">Duplicate</button>
+                    <button class="fbtn ghost" onclick="setScreen('database')">Close</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Events — registro (abas) -->
+        <div class="work" id="work-evrecord" style="display:none">
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Events
+                </div>
+                <div class="form-body">
+                    <div class="tabs" id="ev-tabs">
+                        <button class="tab active" data-pane="ev-ginfo">General Info</button>
+                        <button class="tab" data-pane="ev-desc">Description</button>
+                        <button class="tab" data-pane="ev-img">Image</button>
+                        <button class="tab" data-pane="ev-custom">Custom</button>
+                    </div>
+                    <div class="form-name"><span class="nl">Event</span><span class="nv">Ashes to Alleluia</span></div>
+
+                    <div class="pane active" data-pane="ev-ginfo">
+                        <div class="kv-grid">
+                            <span class="lab">Category</span><span class="val">Lenten</span>
+                            <span class="lab">When</span><span class="val">—</span>
+                            <span class="lab">Calendar</span><span class="val">1/27/2026 4:13:00 PM&nbsp;&nbsp;<span style="color:var(--muted)">· Cut off</span></span>
+                            <span class="lab">Location</span><span class="val">Online - MorningStar Renewal Center</span>
+                            <span class="lab">Address</span><span class="val">7275 SW 124th St.</span>
+                            <span class="lab">City / State / Zip</span><span class="val">Pinecrest / FL / 33156</span>
+                            <span class="lab">Price</span><span class="val">—</span>
+                            <span class="lab">More info</span><span class="val">Other</span>
+                            <span class="lab">Phone</span><span class="val">—</span>
+                            <span class="lab">Display</span><span class="val show-new">New</span>
+                            <span class="lab">In Homepage</span><span class="val">No</span>
+                        </div>
+                    </div>
+                    <div class="pane" data-pane="ev-desc"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg><div>Aba <b>Description</b> — descrição do evento</div></div></div>
+                    <div class="pane" data-pane="ev-img"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><div>Aba <b>Image</b> — imagem do evento</div></div></div>
+                    <div class="pane" data-pane="ev-custom"><div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v10"/></svg><div>Aba <b>Custom</b> — campos personalizados</div></div></div>
+                </div>
+                <div class="form-foot">
+                    <span style="flex:1"></span>
+                    <button class="fbtn primary">Edit</button>
+                    <button class="fbtn danger">Delete</button>
+                    <button class="fbtn ghost">Duplicate</button>
+                    <button class="fbtn ghost" onclick="setScreen('events')">Close</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Mailing List — novo registro -->
+        <div class="work" id="work-mlnew" style="display:none">
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+                    Mailing List · New
+                </div>
+                <div class="form-body">
+                    <div class="fcard" style="max-width:680px">
+                        <div class="ftitle">General Info</div>
+                        <div class="fgrid">
+                            <span class="l">E-mail</span><input class="f" placeholder="name@example.com">
+                            <span class="l">Name</span><input class="f">
+                            <span class="l">Status</span>
+                            <div style="display:flex;gap:10px"><select class="f" style="max-width:200px"><option>Subscribed</option><option>Unsubscribed</option></select><input class="f" value="06/18/2026" style="max-width:160px"></div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:150px 1fr;gap:14px 16px;margin-top:14px">
+                            <span class="l">Groups</span>
+                            <div class="groups-grid" id="mlnew-groups"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-foot">
+                    <span style="flex:1"></span>
+                    <button class="fbtn ghost" onclick="setScreen('mailinglist')">Reset</button>
+                    <button class="fbtn ghost" onclick="setScreen('mailinglist')">Cancel</button>
+                    <button class="fbtn primary" onclick="setScreen('mailinglist')">Save</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Mailing List — registro (visualização) -->
+        <div class="work" id="work-mlrecord" style="display:none">
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+                    Mailing List
+                </div>
+                <div class="form-body">
+                    <div class="fcard" style="max-width:680px">
+                        <div class="form-name"><span class="nl">E-mail</span><span class="nv">23317549@adp.com</span></div>
+                        <div class="kv-grid">
+                            <span class="lab">Name</span><span class="val">5a572553e72cc</span>
+                            <span class="lab">Status</span><span class="val">Bounced&nbsp;&nbsp;<span style="color:var(--muted)">· 1/11/2018</span></span>
+                        </div>
+                        <div style="display:grid;grid-template-columns:150px 1fr;gap:14px 16px;margin-top:16px">
+                            <span class="l">Groups</span>
+                            <div class="groups-grid" id="mlrec-groups"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-foot">
+                    <span style="flex:1"></span>
+                    <button class="fbtn primary">Edit</button>
+                    <button class="fbtn danger">Delete</button>
+                    <button class="fbtn ghost">Duplicate</button>
+                    <button class="fbtn ghost" onclick="setScreen('mailinglist')">Close</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Site Map — novo registro -->
+        <div class="work" id="work-smnew" style="display:none">
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    Site Map · New
+                </div>
+                <div class="form-body">
+                    <div class="fcard" style="max-width:680px">
+                        <div class="form-name"><span class="nl">Menu Item</span><input placeholder="000 000 000 000"></div>
+                        <div class="fgrid">
+                            <span class="l">Label 1</span><input class="f">
+                            <span class="l">op1</span><input class="f">
+                            <span class="l">url1</span><input class="f">
+                            <span class="l">Label 2</span><input class="f">
+                            <span class="l">op2</span><input class="f">
+                            <span class="l">url2</span><input class="f">
+                            <span class="l">Label 3</span><input class="f">
+                            <span class="l">op3</span><input class="f">
+                            <span class="l">url3</span><input class="f">
+                            <span class="l">Label 4</span><input class="f">
+                            <span class="l">op4</span><input class="f">
+                            <span class="l">url4</span><input class="f">
+                            <span class="l">Show</span><select class="f" style="max-width:200px"><option>Yes</option><option>No</option></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-foot">
+                    <span style="flex:1"></span>
+                    <button class="fbtn ghost" onclick="setScreen('sitemap')">Reset</button>
+                    <button class="fbtn ghost" onclick="setScreen('sitemap')">Cancel</button>
+                    <button class="fbtn primary" onclick="setScreen('sitemap')">Save</button>
+                </div>
+            </section>
+        </div>
+
     </div>
 </div>
 
@@ -2759,10 +3353,19 @@ function ic(name) {
 const menu = [
     { icon: 'addressbook', title: 'Database' },
     { icon: 'events', title: 'Events' },
-    { icon: 'web', title: 'Web Design', items: ['Menus', 'Articles', 'Photos', 'Site Map'] },
+    { icon: 'web', title: 'Web Design', items: ['Articles', 'Photos', 'Site Map'] },
     { icon: 'mail', title: 'Mail Center', items: ['Newsletters', 'Mailing List', 'Import Emails', 'Sender APIs'] }
 ];
-const screenOfItem = { Articles: 'articles', Newsletters: 'newsletter', Photos: 'photos' };
+const screenOfSection = { Database: 'database', Events: 'events' };
+const screenOfItem = {
+    Articles: 'articles',
+    Photos: 'photos',
+    'Site Map': 'sitemap',
+    Newsletters: 'messages',
+    'Mailing List': 'mailinglist',
+    'Import Emails': 'importemails',
+    'Sender APIs': 'senderapis'
+};
 
 /* botões de Upload renderizados logo abaixo do menu */
 const uploadButtons = `
@@ -2771,11 +3374,12 @@ const uploadButtons = `
         <button class="upload" onclick="openPopup('upload')"><span class="ic">${ic('uploads')}</span> Upload Multiple Files</button>
     </div>`;
 
-function renderMenu(openTitle, selLabel) {
+function renderMenu(openTitle, selLabel, selSection) {
     document.getElementById('menu').innerHTML = menu.map(s => {
         const hasItems = s.items && s.items.length;
         const open = s.title === openTitle;
-        const head = `<div class="sect ${open ? 'open' : ''}" data-title="${s.title}">${ic(s.icon)} ${s.title}${hasItems ? chev : ''}</div>`;
+        const sectSel = s.title === selSection ? 'sel' : '';
+        const head = `<div class="sect ${open ? 'open' : ''} ${sectSel}" data-title="${s.title}">${ic(s.icon)} ${s.title}${hasItems ? chev : ''}</div>`;
         if (!hasItems) return head;
         const items = `<div class="items" ${open ? '' : 'style="display:none"'}>` +
             s.items.map(it => `<a class="item ${it === selLabel ? 'sel' : ''}" data-item="${it}">${it}</a>`).join('') + `</div>`;
@@ -2783,13 +3387,18 @@ function renderMenu(openTitle, selLabel) {
     }).join('') + uploadButtons;
 
     document.querySelectorAll('.menu .sect').forEach(h => {
+        const title = h.dataset.title;
         const items = h.nextElementSibling;
-        if (items && items.classList.contains('items'))
+        const hasItems = items && items.classList.contains('items');
+        if (hasItems) {
             h.onclick = () => {
                 const o = items.style.display !== 'none';
                 items.style.display = o ? 'none' : 'block';
                 h.classList.toggle('open', !o);
             };
+        } else if (screenOfSection[title]) {
+            h.onclick = () => setScreen(screenOfSection[title]);
+        }
     });
     document.querySelectorAll('.menu .item').forEach(a => {
         const t = screenOfItem[a.dataset.item];
@@ -2805,7 +3414,21 @@ const workOf = {
     newsletter: 'work2',
     articleform: 'work3',
     photos: 'work-photos',
-    album: 'work-album'
+    album: 'work-album',
+    database: 'work-database',
+    events: 'work-events',
+    sitemap: 'work-sitemap',
+    messages: 'work-messages',
+    mailinglist: 'work-mailinglist',
+    senderapis: 'work-senderapis',
+    importemails: 'work-importemails',
+    changepw: 'work-changepw',
+    removed: 'work-removed',
+    dbrecord: 'work-dbrecord',
+    evrecord: 'work-evrecord',
+    mlnew: 'work-mlnew',
+    mlrecord: 'work-mlrecord',
+    smnew: 'work-smnew'
 };
 
 function setScreen(s) {
@@ -2816,12 +3439,18 @@ function setScreen(s) {
     /* mostra a área de trabalho da tela */
     Object.values(workOf).forEach(id => document.getElementById(id).style.display = 'none');
     document.getElementById(workOf[s]).style.display = 'flex';
-    /* destaca o botão da barra */
-    document.querySelectorAll('.screens button').forEach(b => b.classList.toggle('active', b.dataset.s === s));
-    /* menu do app conforme a tela */
+    /* menu do app: seção aberta / item ou seção selecionada conforme a tela */
     if (s === 'articles' || s === 'articleform') renderMenu('Web Design', 'Articles');
     else if (s === 'photos' || s === 'album') renderMenu('Web Design', 'Photos');
-    else if (s === 'newsletter') renderMenu('Mail Center', 'Newsletters');
+    else if (s === 'sitemap') renderMenu('Web Design', 'Site Map');
+    else if (s === 'newsletter' || s === 'messages') renderMenu('Mail Center', 'Newsletters');
+    else if (s === 'mailinglist') renderMenu('Mail Center', 'Mailing List');
+    else if (s === 'importemails') renderMenu('Mail Center', 'Import Emails');
+    else if (s === 'senderapis') renderMenu('Mail Center', 'Sender APIs');
+    else if (s === 'database' || s === 'dbrecord') renderMenu('', '', 'Database');
+    else if (s === 'events' || s === 'evrecord') renderMenu('', '', 'Events');
+    else if (s === 'mlnew' || s === 'mlrecord') renderMenu('Mail Center', 'Mailing List');
+    else if (s === 'smnew') renderMenu('Web Design', 'Site Map');
     else renderMenu('', '');
     if (isLogin) loginView('hero');
 }
@@ -2878,8 +3507,8 @@ function badge(c) {
     else if (c === 'Miscarriage') k = 'b-misc';
     return `<span class="badge ${k}">${c}</span>`;
 }
-const yes = '<span class="show-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Yes</span>';
-const no = '<span class="show-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>No</span>';
+const yes = '<span class="show-yes">Yes</span>';
+const no = '<span class="show-no">No</span>';
 
 /* dados fictícios cobrindo as famílias de categoria + alguns Show=No */
 const data = [
@@ -2988,9 +3617,124 @@ document.getElementById('album-grid').innerHTML = albumGrads.map((g, i) => `
         <div class="cap">${albumCaps[i]}</div>
     </div>`).join('');
 
+/* ---------- DATABASE (Address Book) ---------- */
+const dbData = [
+    ["Assumption of the Blessed Virgin Mary (Ukrainian)", "Miami", "FL", "Eastern Catholic Church"],
+    ["Heart of Jesus (Maronite)", "Fort Lauderdale", "FL", "Eastern Catholic Church"],
+    ["Our Lady of Health (Syro Malabar)", "Coral Springs", "FL", "Eastern Catholic Church"],
+    ["Our Lady of Lebanon (Maronite)", "Miami", "FL", "Eastern Catholic Church"],
+    ["Our Lady of the Sign (Byzantine)", "Coconut Creek", "FL", "Eastern Catholic Church"],
+    ["St. Basil the Great (Byzantine)", "Miami", "FL", "Eastern Catholic Church"],
+    ["St. Jude (Melkite)", "Miami", "FL", "Eastern Catholic Church"],
+    ["St. Jude Knanaya (Syro-Malabar)", "Fort Lauderdale", "FL", "Eastern Catholic Church"],
+    ["Syro-Malankara Church", "Hollywood", "FL", "Eastern Catholic Church"]
+];
+document.getElementById('db-rows').innerHTML = dbData.map(r => `
+    <tr onclick="setScreen('dbrecord')" style="cursor:pointer"><td class="name"><a>${r[0]}</a></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('');
+
+/* ---------- EVENTS ---------- */
+const evData = [
+    ["15th Annual Cheers to Charity", "2/18/2026 8:13:00 AM", "Community", 1],
+    ["2026 Archbishop's Motorcycle Ride", "12/15/2025 9:53:00 AM", "Community", 1],
+    ["2026 Good Shepherd CAR-NIVAL", "2/15/2026 9:57:00 PM", "Community", 1],
+    ["A Silent Lenten Retreat: What Women and Men can Learn", "1/27/2026 4:48:00 PM", "Lenten", 1],
+    ["Adoremus - Blessed Trinity", "2/27/2026 5:46:00 PM", "Eucharistic Revival", 2],
+    ["Adoremus - Little Flower (Hollywood)", "3/24/2026 5:23:00 PM", "Eucharistic Revival", 2],
+    ["Advent Day of Silent Retreat - Stations of the Crib", "11/27/2025 4:41:00 PM", "Retreats - Days of Reflection", 1],
+    ["Annual Christmas Tree Lighting Ceremony", "12/9/2025 5:09:00 PM", "Community", 1],
+    ["Ash Wednesday Retreat", "1/27/2026 4:33:00 PM", "Lenten", 1],
+    ["Ashes to Alleluia", "1/27/2026 4:13:00 PM", "Lenten", 2],
+    ["Blessing of the Swords", "2/4/2026 8:54:00 PM", "Community", 1],
+    ["Camino del Matrimonio - Abril 11 y 12 en Español", "", "Marriage Preparation", 0],
+    ["Camino del Matrimonio - April 25 & 26 - English", "1/1/1900", "Marriage Preparation", 0]
+];
+const showTag = v => v === 2 ? '<span class="show-new">New</span>' : (v ? yes : no);
+document.getElementById('ev-rows').innerHTML = evData.map(r => `
+    <tr onclick="setScreen('evrecord')" style="cursor:pointer"><td class="name"><a>${r[0]}</a></td><td>${r[1]}</td><td>${r[2]}</td><td>${showTag(r[3])}</td></tr>`).join('');
+
+/* ---------- SITE MAP (Intl Menus) ---------- */
+const smData = [
+    ["000 000 000 000", "HOME", "Home"],
+    ["100 000 000 000", "ABOUT US", ""],
+    ["100 100 000 000", "Our Leaders", ""],
+    ["100 100 100 000", "Archbishop Thomas Wenski", "ArchbishopThomasWenski"],
+    ["100 100 200 000", "Archbishop Emeritus of Miami", "ArchbishopJohnFavalora"],
+    ["100 100 300 000", "Auxiliary Bishop Enrique Delgado", "Auxiliary_Bishop_Enrique_Delgado"],
+    ["100 200 000 000", "History 1958-2018", "H_Timeline"],
+    ["200 000 000 000", "OFFICES & MINISTRIES", ""],
+    ["200 100 000 000", "Administration", ""],
+    ["200 100 100 000", "Archbishop's Office", "Archbishops_Office"],
+    ["200 100 110 000", "Chancellors' Office", "Chancellors_Office"],
+    ["200 100 120 000", "Deaneries", "Deanery_Map"],
+    ["200 100 300 000", "Human Resources", "Human_Resources_Office"]
+];
+document.getElementById('sm-rows').innerHTML = smData.map(r => `
+    <tr onclick="setScreen('smnew')" style="cursor:pointer"><td class="name"><a>${r[0]}</a></td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');
+
+/* ---------- NEWSLETTERS (Messages) ---------- */
+const msgData = [
+    ["Weekly Newsletter - 2026-06-17 09:19:00", 0, "", "6/17/2026 7:19:00 AM"],
+    ["Blog - 2026-06-16 14:18:05", 0, "", "6/16/2026"],
+    ["Weekly Newsletter - 2026-06-04 15:51:52", 0, "", "6/4/2026 1:52:00 PM"],
+    ["Catholic Lens Blog - 2026-06-03 13:58:00", 0, "", "6/3/2026 11:58:00 AM"],
+    ["Weekly Newsletter - 2026-05-28 14:03:05", 0, "", "5/28/2026 12:03:00 PM"],
+    ["Weekly Newsletter - 2026-05-21 15:45:19", 0, "", "5/21/2026 1:45:00 PM"],
+    ["EASTER 2026", 0, "C", "3/27/2026"],
+    ["Weekly Newsletter - 2026-03-25 15:03:33", 0, "", "3/25/2026 1:04:00 PM"],
+    ["Weekly Newsletter - 2026-03-11 14:28:24", 0, "", "3/11/2026 12:28:00 PM"],
+    ["Weekly Newsletter - 2026-02-25 15:40:23", 0, "", "2/25/2026 2:40:00 PM"],
+    ["Weekly Newsletter - 2026-02-11 15:39:26", 0, "", "2/11/2026 2:39:00 PM"]
+];
+document.getElementById('msg-rows').innerHTML = msgData.map(r => `
+    <tr onclick="setScreen('newsletter')" style="cursor:pointer">
+        <td class="name"><a>${r[0]}</a></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('');
+
+/* ---------- MAILING LIST ---------- */
+function mlStatus(s) {
+    const map = { Subscribed: 'b-published', Bounced: 'b-restricted', Dropped: 'b-insert', Unsubscribed: 'b-default', Invalid: 'b-ajax' };
+    return `<span class="badge ${map[s] || 'b-default'}">${s}</span>`;
+}
+const mlData = [
+    ["007rubenayala@bellsouth.net", "Ruben ayala", "V", "05/07/2007", "Bounced"],
+    ["0809chala@gmail.com", "Patricia Chala", "V", "01/29/2025", "Subscribed"],
+    ["08dlbegay@gmail.com", "Delphina begay", "V", "07/07/2021", "Subscribed"],
+    ["1011625p1@ilsparent.com", "GIORGIANY ARBOLEDA", "V", "09/29/2025", "Dropped"],
+    ["1123rsw@att.net", "Silvia Weathersby", "V", "04/06/2023", "Subscribed"],
+    ["11bnd13@gmail.com", "5d13ca6c71f63", "V", "06/26/2019", "Unsubscribed"],
+    ["123813met@gmail.com", "Mario E Toledo", "V", "12/22/2015", "Subscribed"],
+    ["1285.ac@gmail.com", "Jose Amílcar Contreras", "V", "04/23/2025", "Subscribed"],
+    ["13aboucourt@gmail.com", "Alexander Boucourt", "V", "01/29/2020", "Subscribed"],
+    ["17862083332@tmomail.net", "Michael Gorchov", "V", "07/20/2010", "Bounced"],
+    ["1amv1224@yahoo.com", "Aida Marie Valentin", "V", "02/12/2024", "Dropped"],
+    ["1stpal.com@gmail.com", "5970054ba615c", "V", "07/19/2017", "Invalid"],
+    ["2018katinna@gmail.com", "KATHERINE L JOHNSON", "V", "08/09/2018", "Subscribed"],
+    ["23317549@adp.com", "5a572553e72cc", "V", "01/11/2018", "Bounced"]
+];
+document.getElementById('ml-rows').innerHTML = mlData.map(r => `
+    <tr onclick="setScreen('mlrecord')" style="cursor:pointer"><td class="name"><a>${r[0]}</a></td><td>${r[1]}</td><td style="text-align:center">${r[2]}</td><td>${r[3]}</td><td>${mlStatus(r[4])}</td></tr>`).join('');
+
+/* ---------- grupos (checkboxes Group A–R) ---------- */
+const groupBoxes = readonly => Array.from({ length: 18 }, (_, i) =>
+    `<label class="grp"><input type="checkbox" ${readonly ? 'disabled' : ''}> Group ${String.fromCharCode(65 + i)}</label>`).join('');
+document.getElementById('mlnew-groups').innerHTML = groupBoxes(false);
+document.getElementById('mlrec-groups').innerHTML = groupBoxes(true);
+
+/* ---------- botões "New" das listas -> formulários/registros ---------- */
+document.querySelector('#work-database .btn-new').onclick = () => setScreen('dbrecord');
+document.querySelector('#work-events .btn-new').onclick = () => setScreen('evrecord');
+document.querySelector('#work-sitemap .btn-new').onclick = () => setScreen('smnew');
+document.querySelector('#work-mailinglist .btn-new').onclick = () => setScreen('mlnew');
+document.querySelector('#work-messages .btn-new').onclick = () => setScreen('newsletter');
+
+/* ---------- navegação extra (logo = home) ---------- */
+document.querySelector('.topbar .brand').style.cursor = 'pointer';
+document.querySelector('.topbar .brand').onclick = () => setScreen('dashboard');
+
 /* inicialização */
 wireTabs('nl-tabs');
 wireTabs('af-tabs');
+wireTabs('db-tabs');
+wireTabs('ev-tabs');
 afMode('view');
 setScreen('articles');
 </script>
