@@ -1,0 +1,27 @@
+# --- Cruft de SO / editor ---
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+*~
+.vscode/
+.idea/
+
+# --- Defensivo: NUNCA versionar código do e-system legado ---
+# Este repositório deve conter SOMENTE o mockup estático (index.html).
+# Os padrões abaixo evitam que, por engano, qualquer arquivo do sistema
+# real (ASP, conexões de banco, dados de cliente) seja commitado aqui.
+*.asp
+*.php
+*.mdb
+*.accdb
+*.sql
+data_cnx.*
+data_atimo.*
+Atimo/
+Atimo_s/
+e_system_02/
+login/
+images/
+mail/
+Tools/

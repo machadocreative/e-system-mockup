@@ -1,0 +1,2998 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>e-system — Mockup (Modernizado)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================================
+   MOCKUP e-system — arquivo de teste isolado (NÃO faz parte do sistema).
+   Apenas a versão modernizada ("Depois"). Comparação com o atual é feita
+   abrindo o e-system real ao lado.
+   CSS formatado em estilo expandido (uma regra por linha) — padrão do projeto.
+   ========================================================================= */
+
+:root {
+    --navy: #16365C;
+    --navy-deep: #0F2942;
+    --blue: #2D7FF0;
+    --blue-600: #1F6FE0;
+    --blue-soft: #EAF2FE;
+    --bg: #EEF2F7;
+    --card: #FFFFFF;
+    --border: #E2E8F0;
+    --border-strong: #CBD5E1;
+    --text: #2B3A4A;
+    --muted: #7A8AA0;
+    --table-head: #213A57;
+    --green: #2BA84A;
+    --radius: 10px;
+    --shadow: 0 1px 3px rgba(16, 41, 66, .08), 0 6px 24px rgba(16, 41, 66, .06);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    background: var(--bg);
+    font-family: 'Inter', system-ui, 'Segoe UI', Arial, sans-serif;
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    padding: 64px 18px 28px;
+}
+
+/* ---- Barra de controle do mockup (fora do sistema) ---- */
+.mock-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 18px;
+    background: #0F2942;
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+}
+
+.mock-bar strong {
+    font-weight: 600;
+    letter-spacing: .2px;
+}
+
+.screens {
+    display: inline-flex;
+    background: #1C3D5A;
+    border-radius: 999px;
+    padding: 4px;
+    gap: 4px;
+    margin-left: 20px;
+}
+
+.screens button {
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 999px;
+    color: #9DB4CE;
+    background: transparent;
+    transition: .15s;
+}
+
+.screens button.active {
+    background: #3C5E84;
+    color: #fff;
+}
+
+/* ---- Moldura simulando a janela ---- */
+.app {
+    max-width: 1120px;
+    margin: 0 auto;
+    height: 690px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    background: var(--card);
+    border: 1px solid var(--border);
+}
+
+/* ============================ CABEÇALHO ============================ */
+.topbar {
+    height: 58px;
+    flex: 0 0 58px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(120deg, var(--navy-deep), var(--navy) 55%, #1E4D7B);
+    color: #fff;
+    padding: 0 20px;
+    position: relative;
+}
+
+.topbar .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.topbar .brand .dot {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    background: var(--blue);
+    display: grid;
+    place-items: center;
+    font-size: 15px;
+    box-shadow: 0 2px 8px rgba(45, 127, 240, .5);
+}
+
+.topbar .cia {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: .3px;
+    pointer-events: none;
+}
+
+/* logo oficial atimo (placeholder — no sistema real usa a imagem MainTop_R) */
+.topbar .atimo-logo {
+    margin-left: auto;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, .7);
+    display: grid;
+    place-items: center;
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff;
+}
+
+/* ============================ CORPO ============================ */
+.shell {
+    flex: 1;
+    display: flex;
+    min-height: 0;
+}
+
+/* ----- MENU LATERAL ----- */
+.sidebar {
+    width: 216px;
+    flex: 0 0 216px;
+    background: #fff;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.user-card {
+    padding: 16px 16px 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.user-card .top {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.user-card .ua {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--blue-soft);
+    color: var(--blue);
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: 18px;
+    flex: 0 0 44px;
+}
+
+.user-card .un {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.2;
+}
+
+.user-card .ur {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.user-card .actbtn {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-decoration: none;
+    cursor: pointer;
+    padding: 7px 10px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+}
+
+.user-card .actbtn svg {
+    width: 14px;
+    height: 14px;
+}
+
+.user-card .pw {
+    margin-top: 11px;
+}
+
+.user-card .pw:hover {
+    color: var(--blue);
+    border-color: #BBD6F7;
+    background: var(--blue-soft);
+}
+
+.user-card .logout {
+    margin-top: 8px;
+}
+
+.user-card .logout:hover {
+    color: #C41422;
+    border-color: #F2C9CD;
+    background: #FDECEE;
+}
+
+.menu {
+    flex: 1;
+    overflow: auto;
+    padding: 10px 10px;
+}
+
+/* título de seção (com ícone, em destaque) */
+.menu .sect {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    cursor: pointer;
+    padding: 12px 12px;
+    border-radius: 9px;
+    color: var(--navy);
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 14px;
+    transition: .12s;
+    margin-top: 6px;
+}
+
+.menu .sect:first-child {
+    margin-top: 0;
+}
+
+.menu .sect svg {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    color: var(--blue);
+}
+
+.menu .sect .chev {
+    margin-left: auto;
+    width: 14px;
+    height: 14px;
+    color: var(--muted);
+    transition: .15s;
+}
+
+.menu .sect:hover {
+    background: var(--blue-soft);
+}
+
+.menu .sect.sel {
+    background: var(--blue);
+    color: #fff;
+}
+
+.menu .sect.sel svg,
+.menu .sect.sel .chev {
+    color: #fff;
+}
+
+.menu .sect.open .chev {
+    transform: rotate(90deg);
+}
+
+/* itens (sem ícone, recuados) */
+.menu .items {
+    padding: 2px 0 6px;
+}
+
+.menu .item {
+    display: block;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 9px 12px 9px 42px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .12s;
+}
+
+.menu .item:hover {
+    background: var(--blue-soft);
+    color: var(--blue-600);
+}
+
+.menu .item.sel {
+    background: var(--blue-soft);
+    color: var(--blue-600);
+    font-weight: 600;
+    box-shadow: inset 3px 0 0 var(--blue);
+}
+
+/* botões de Upload (logo abaixo do menu) — estilo do antigo painel direito */
+.upload-actions {
+    padding: 8px 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);
+    background: #fff;
+    padding: 9px 10px;
+    border: 1px dashed var(--border-strong);
+    border-radius: 8px;
+}
+
+.upload:hover {
+    border-color: var(--blue);
+    background: var(--blue-soft);
+    color: var(--blue);
+}
+
+.upload .ic {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    background: var(--blue-soft);
+    color: var(--blue);
+    display: grid;
+    place-items: center;
+    border-radius: 7px;
+}
+
+.upload .ic svg {
+    width: 16px;
+    height: 16px;
+}
+
+.clock {
+    padding: 11px 16px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+/* ----- ÁREA DE TRABALHO ----- */
+.work {
+    flex: 1;
+    display: flex;
+    min-width: 0;
+    background: var(--bg);
+    padding: 12px;
+    gap: 12px;
+}
+
+.window {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.win-title {
+    height: 46px;
+    flex: 0 0 46px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 0 14px;
+    background: linear-gradient(180deg, #fff, #F6F9FD);
+    border-bottom: 1px solid var(--border);
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy);
+}
+
+.win-title > svg {
+    width: 17px;
+    height: 17px;
+    color: var(--blue);
+}
+
+.win-title .tools {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.btn-new {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    border: 0;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+    font-size: 13px;
+    color: #fff;
+    background: var(--blue);
+    padding: 8px 14px;
+    border-radius: 8px;
+}
+
+.btn-new:hover {
+    background: var(--blue-600);
+}
+
+.btn-new svg {
+    width: 15px;
+    height: 15px;
+}
+
+.toggle-search {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid var(--border-strong);
+    background: #fff;
+    display: grid;
+    place-items: center;
+    color: var(--muted);
+    cursor: pointer;
+}
+
+.toggle-search:hover {
+    background: var(--blue-soft);
+    color: var(--blue);
+    border-color: var(--blue);
+}
+
+.toggle-search svg {
+    width: 17px;
+    height: 17px;
+}
+
+/* tabela de dados (Tela 1) */
+.grid-wrap {
+    flex: 1;
+    overflow: auto;
+}
+
+table.grid {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+table.grid thead th {
+    position: sticky;
+    top: 0;
+    background: var(--table-head);
+    color: #fff;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: .3px;
+    padding: 11px 14px;
+    white-space: nowrap;
+}
+
+table.grid tbody td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #EEF1F5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+}
+
+table.grid tbody tr:hover {
+    background: var(--blue-soft);
+}
+
+table.grid .name a {
+    color: var(--blue-600);
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+table.grid .name a:hover {
+    text-decoration: underline;
+}
+
+.badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.b-menu {
+    background: #EEF0FF;
+    color: #4F46E5;
+}
+
+.b-mail {
+    background: #E2F6F3;
+    color: #0E9384;
+}
+
+.b-article {
+    background: #E7F6EC;
+    color: #2BA84A;
+}
+
+.b-published {
+    background: #D7F5E3;
+    color: #067647;
+}
+
+.b-html {
+    background: #F3EBFB;
+    color: #7C3AED;
+}
+
+.b-ajax {
+    background: #EAEEF4;
+    color: #51607A;
+}
+
+.b-restricted {
+    background: #FDEAEA;
+    color: #C41422;
+}
+
+.b-insert {
+    background: #FCF1DE;
+    color: #B7791F;
+}
+
+.b-blog {
+    background: #FDEBDD;
+    color: #D9631E;
+}
+
+.b-meta {
+    background: #E2F1FB;
+    color: #0E7DA8;
+}
+
+.b-misc {
+    background: #FCE9F1;
+    color: #BE2D7A;
+}
+
+.b-default {
+    background: #EEF1F5;
+    color: #51607A;
+}
+
+.show-yes {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--green);
+    font-weight: 600;
+}
+
+.show-no {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #94A3B8;
+    font-weight: 600;
+}
+
+.show-yes svg,
+.show-no svg {
+    width: 14px;
+    height: 14px;
+}
+
+.win-foot {
+    height: 40px;
+    flex: 0 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 14px;
+    border-top: 1px solid var(--border);
+    background: #F8FAFC;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.win-foot b {
+    color: var(--navy);
+}
+
+.pager {
+    margin-left: auto;
+    display: flex;
+    gap: 3px;
+}
+
+.pager span {
+    min-width: 24px;
+    height: 24px;
+    padding: 0 6px;
+    border-radius: 6px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.pager span:hover {
+    background: var(--blue-soft);
+    color: var(--blue);
+}
+
+.pager span.cur {
+    background: var(--blue);
+    color: #fff;
+}
+
+/* ----- PAINEL LATERAL DIREITO (Search) — SEM border-radius ----- */
+.search {
+    width: 248px;
+    flex: 0 0 248px;
+    background: #fff;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    overflow: auto;
+}
+
+.search.hidden {
+    display: none;
+}
+
+.search h3 {
+    margin: 0 0 6px;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search h3 svg {
+    width: 16px;
+    height: 16px;
+    color: var(--blue);
+}
+
+.field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    margin-bottom: 4px;
+}
+
+.field .row {
+    display: flex;
+    gap: 6px;
+}
+
+.field select,
+.field input {
+    font: inherit;
+    font-size: 13px;
+    padding: 7px 9px;
+    border: 1px solid var(--border-strong);
+    background: #fff;
+    color: var(--text);
+    width: 100%;
+    border-radius: 0;
+}
+
+.field select {
+    flex: 1;
+    min-width: 0;
+}
+
+.field .row select:first-child {
+    flex: 0 0 56px;
+    padding: 7px 6px;
+}
+
+.field input:focus,
+.field select:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px var(--blue-soft);
+}
+
+.btn-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.btn {
+    flex: 1;
+    font: inherit;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 9px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 0;
+}
+
+.btn.primary {
+    background: var(--blue);
+    color: #fff;
+}
+
+.btn.primary:hover {
+    background: var(--blue-600);
+}
+
+.btn.ghost {
+    background: #fff;
+    color: var(--navy);
+    border-color: var(--border-strong);
+}
+
+.btn.ghost:hover {
+    background: var(--bg);
+}
+
+.backbtn {
+    width: 100%;
+    font: inherit;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 9px;
+    cursor: pointer;
+    background: #fff;
+    color: var(--navy);
+    border: 1px solid var(--border-strong);
+    border-radius: 0;
+    margin-top: 4px;
+}
+
+.backbtn:hover {
+    background: var(--bg);
+}
+
+/* ----- TELA 2: formulário com abas (Newsletter > Tools) ----- */
+.form-body {
+    flex: 1;
+    overflow: auto;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid var(--border);
+}
+
+.tab {
+    border: 0;
+    background: transparent;
+    font: inherit;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--muted);
+    padding: 10px 16px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    border-radius: 8px 8px 0 0;
+}
+
+.tab:hover {
+    color: var(--navy);
+    background: var(--blue-soft);
+}
+
+.tab.active {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+}
+
+.id-line {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.id-line b {
+    color: var(--blue-600);
+    font-weight: 600;
+}
+
+.block {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.tools-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: #F6F9FD;
+    border-bottom: 1px solid var(--border);
+}
+
+.tbtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font: inherit;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 8px 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid var(--border-strong);
+    background: #fff;
+    color: var(--navy);
+}
+
+.tbtn:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+    background: var(--blue-soft);
+}
+
+.tbtn svg {
+    width: 15px;
+    height: 15px;
+}
+
+.tbtn.active {
+    background: var(--blue-soft);
+    border-color: #BBD6F7;
+    color: var(--blue-600);
+}
+
+.tbtn.send {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
+}
+
+.tbtn.send:hover {
+    filter: brightness(.95);
+    color: #fff;
+}
+
+/* lista de estatísticas de envio (corpo do bloco "Lists") */
+.stat-list {
+    padding: 6px 4px;
+}
+
+.stat-list .srow {
+    display: flex;
+    align-items: center;
+    padding: 8px 14px;
+    font-size: 13px;
+    color: var(--text);
+    border-bottom: 1px solid #F1F4F8;
+}
+
+.stat-list .srow:last-child {
+    border-bottom: 0;
+}
+
+.stat-list .srow .lab {
+    color: var(--muted);
+}
+
+.stat-list .srow b {
+    margin-left: 8px;
+    color: var(--navy);
+    font-weight: 600;
+}
+
+.stat-list .srow a {
+    margin-left: 8px;
+    color: var(--blue-600);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.stat-list .srow a:hover {
+    text-decoration: underline;
+}
+
+.form-foot {
+    height: 56px;
+    flex: 0 0 56px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 16px;
+    border-top: 1px solid var(--border);
+    background: #F8FAFC;
+}
+
+.fbtn {
+    font: inherit;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.fbtn.primary {
+    background: var(--blue);
+    color: #fff;
+}
+
+.fbtn.primary:hover {
+    background: var(--blue-600);
+}
+
+.fbtn.ghost {
+    background: #fff;
+    color: var(--navy);
+    border-color: var(--border-strong);
+}
+
+.fbtn.ghost:hover {
+    background: var(--bg);
+}
+
+.fbtn.danger {
+    background: #fff;
+    color: #C41422;
+    border-color: #F2C9CD;
+}
+
+.fbtn.danger:hover {
+    background: #FDECEE;
+}
+
+/* ----- POP-UP de Upload / Preview (2ª janela) ----- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    background: rgba(15, 41, 66, .45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(1px);
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.popup {
+    width: 560px;
+    max-width: 92vw;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(15, 41, 66, .35);
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-bar {
+    height: 46px;
+    flex: 0 0 46px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 0 14px;
+    background: linear-gradient(120deg, var(--navy-deep), var(--navy));
+    color: #fff;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.popup-bar svg {
+    width: 16px;
+    height: 16px;
+}
+
+.popup-bar .x {
+    margin-left: auto;
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    border: 0;
+    cursor: pointer;
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-size: 16px;
+}
+
+.popup-bar .x:hover {
+    background: rgba(255, 255, 255, .25);
+}
+
+.popup-body {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.up-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.up-head select {
+    margin-left: auto;
+    font: inherit;
+    font-size: 13px;
+    padding: 7px 9px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text);
+}
+
+.dropzone {
+    border: 2px dashed var(--border-strong);
+    border-radius: 12px;
+    padding: 34px 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: .15s;
+    background: #FAFCFF;
+}
+
+.dropzone:hover {
+    border-color: var(--blue);
+    background: var(--blue-soft);
+}
+
+.dropzone .cloud {
+    width: 46px;
+    height: 46px;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    background: var(--blue-soft);
+    color: var(--blue);
+    display: grid;
+    place-items: center;
+}
+
+.dropzone .cloud svg {
+    width: 24px;
+    height: 24px;
+}
+
+.dropzone b {
+    display: block;
+    color: var(--navy);
+    font-size: 15px;
+    font-family: 'Poppins';
+}
+
+.dropzone span {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.dropzone span a {
+    color: var(--blue);
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.dropzone small {
+    display: block;
+    margin-top: 8px;
+    font-size: 11px;
+    color: #A6B3C4;
+}
+
+.filerow {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 10px 12px;
+}
+
+.filerow .ft {
+    width: 34px;
+    height: 34px;
+    border-radius: 7px;
+    background: var(--blue-soft);
+    color: var(--blue);
+    display: grid;
+    place-items: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex: 0 0 34px;
+}
+
+.filerow .fn {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.filerow .fs {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.filerow .bar {
+    height: 5px;
+    border-radius: 999px;
+    background: #E6ECF3;
+    margin-top: 6px;
+    overflow: hidden;
+}
+
+.filerow .bar i {
+    display: block;
+    height: 100%;
+    width: 72%;
+    background: var(--blue);
+    border-radius: 999px;
+}
+
+.filerow .act {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+}
+
+.filerow .iconbtn {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: #fff;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    color: var(--muted);
+}
+
+.filerow .iconbtn:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.filerow .iconbtn.rm:hover {
+    border-color: #F2C9CD;
+    color: #C41422;
+}
+
+.filerow .iconbtn svg {
+    width: 15px;
+    height: 15px;
+}
+
+.preview-img {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: repeating-conic-gradient(#EEF2F7 0 25%, #fff 0 50%) 0 0 / 24px 24px;
+    display: grid;
+    place-items: center;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.popup-foot {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 14px 18px;
+    border-top: 1px solid var(--border);
+    background: #F8FAFC;
+}
+
+/* ----- ABAS / PAINÉIS genéricos (Newsletter e Article Form) ----- */
+.pane {
+    display: none;
+}
+
+.pane.active {
+    display: block;
+}
+
+/* ----- Campos: leitura (key/value) e edição (inputs) ----- */
+.form-name {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 0 0 12px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 16px;
+}
+
+.form-name .nl {
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy);
+}
+
+.form-name .nv {
+    color: var(--blue-600);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-name input {
+    flex: 1;
+    font: inherit;
+    font-size: 13px;
+    padding: 8px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+}
+
+.kv-grid {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    column-gap: 16px;
+    align-items: center;
+    font-size: 13px;
+    max-width: 560px;
+}
+
+/* separação por linha (apenas no modo leitura) */
+.kv-grid > .lab,
+.kv-grid > .val {
+    padding: 9px 0;
+    border-bottom: 1px solid #EEF1F5;
+}
+
+.kv-grid .lab {
+    color: var(--muted);
+}
+
+.kv-grid .val {
+    color: var(--blue-600);
+    font-weight: 500;
+}
+
+.kv-grid .ed-lab {
+    color: var(--navy);
+    font-weight: 600;
+}
+
+/* modo edição precisa de respiro vertical (não tem bordas de linha) */
+#af-edit .kv-grid {
+    row-gap: 12px;
+    align-items: center;
+}
+
+input.f,
+select.f {
+    width: 100%;
+    font: inherit;
+    font-size: 13px;
+    padding: 8px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text);
+}
+
+input.f:focus,
+select.f:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px var(--blue-soft);
+}
+
+.check {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.check input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--blue);
+}
+
+/* ----- Editor de conteúdo (HTML puro, não-WYSIWYG) ----- */
+.editor-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.editor-bar .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 9px;
+    border-radius: 999px;
+    background: var(--blue-soft);
+    color: var(--blue-600);
+    font-weight: 600;
+}
+
+.editor {
+    width: 100%;
+    min-height: 320px;
+    font-family: ui-monospace, 'Cascadia Code', Consolas, monospace;
+    font-size: 12.5px;
+    line-height: 1.65;
+    padding: 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    color: #2B3A4A;
+    background: #FBFCFE;
+    resize: vertical;
+    tab-size: 2;
+}
+
+.editor:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px var(--blue-soft);
+}
+
+/* ----- Newsletter: Groups (checkboxes) ----- */
+.groups-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 11px 20px;
+    max-width: 620px;
+}
+
+.grp {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 13px;
+    color: var(--blue-600);
+}
+
+.grp input {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--blue);
+}
+
+.groups-meta {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 12px 14px;
+    align-items: start;
+    font-size: 13px;
+    max-width: 620px;
+}
+
+.groups-meta .lab {
+    color: var(--muted);
+    padding-top: 7px;
+}
+
+.groups-meta a {
+    color: var(--blue-600);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.groups-meta textarea {
+    width: 100%;
+    min-height: 84px;
+    font: inherit;
+    font-size: 13px;
+    padding: 9px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    resize: vertical;
+}
+
+/* ----- Newsletter: Message (prévia do e-mail) ----- */
+.msg-preview {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.msg-preview .mp-bar {
+    padding: 9px 13px;
+    background: #F6F9FD;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.msg-preview .mp-body {
+    height: 340px;
+    overflow: auto;
+    background: #fff;
+}
+
+.email {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 16px 20px 28px;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #333;
+}
+
+.email .pre {
+    font-size: 11px;
+    color: #9aa;
+    font-family: 'Inter', sans-serif;
+    padding-bottom: 10px;
+}
+
+.email .brand {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #1B5E20;
+    font-size: 15px;
+}
+
+.email .tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #2E7D32;
+    padding: 2px 0 12px;
+}
+
+.email .rule {
+    height: 3px;
+    background: #2E7D32;
+    margin: 0 0 16px;
+}
+
+.email .photo {
+    height: 150px;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #cfd8e3, #aebccd);
+    display: grid;
+    place-items: center;
+    color: #5a6b80;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    margin-bottom: 16px;
+}
+
+.email h2 {
+    font-size: 19px;
+    font-style: italic;
+    color: #1b2a3a;
+    margin: 6px 0;
+}
+
+.email p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* ----- LOGIN: caixa de login (substitui o menu) ----- */
+.loginbox {
+    width: 216px;
+    flex: 0 0 216px;
+    background: #fff;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+}
+
+.loginbox .lb-head {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.loginbox .lb-head svg {
+    width: 16px;
+    height: 16px;
+    color: var(--blue);
+}
+
+.loginbox .lb-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.lf label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    margin-bottom: 5px;
+}
+
+.lf .inp {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    padding: 0 10px;
+}
+
+.lf .inp:focus-within {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px var(--blue-soft);
+}
+
+.lf .inp svg {
+    width: 15px;
+    height: 15px;
+    color: var(--muted);
+    flex: 0 0 15px;
+}
+
+.lf .inp input,
+.lf .inp select {
+    border: 0;
+    outline: none;
+    font: inherit;
+    font-size: 13px;
+    padding: 9px 0;
+    width: 100%;
+    background: transparent;
+    color: var(--text);
+}
+
+.login-submit {
+    margin-top: 2px;
+    width: 100%;
+    font: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--blue);
+    color: #fff;
+    cursor: pointer;
+}
+
+.login-submit:hover {
+    background: var(--blue-600);
+}
+
+.forgot-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    margin-top: 20px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.forgot-link svg {
+    width: 26px;
+    height: 26px;
+}
+
+.forgot-link:hover {
+    color: var(--blue);
+}
+
+/* ----- LOGIN: área de trabalho (hero + forgot) ----- */
+.hero {
+    flex: 1;
+    padding: 44px 52px;
+    overflow: auto;
+    background: var(--bg);
+}
+
+.hero h1 {
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 1.32;
+    color: var(--navy);
+    max-width: 640px;
+    margin: 0 0 24px;
+}
+
+.hero .props {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 580px;
+    margin-bottom: 30px;
+}
+
+.hero .prop {
+    display: flex;
+    gap: 13px;
+    align-items: flex-start;
+    font-size: 15px;
+    color: var(--text);
+}
+
+.hero .prop .pi {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    background: var(--blue-soft);
+    color: var(--blue);
+    display: grid;
+    place-items: center;
+    flex: 0 0 26px;
+}
+
+.hero .prop .pi svg {
+    width: 15px;
+    height: 15px;
+}
+
+.hero .cards {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.hero .wcard {
+    width: 152px;
+    height: 106px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #fff;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.hero .wcard .wc-bar {
+    height: 15px;
+    background: linear-gradient(90deg, #dfe8f5, #eef3f9);
+    border-bottom: 1px solid var(--border);
+}
+
+.hero .wcard .wc-body {
+    padding: 9px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hero .wcard .wc-body i {
+    display: block;
+    height: 9px;
+    border-radius: 3px;
+    background: var(--blue-soft);
+}
+
+.hero .wcard .wc-body i.wide {
+    width: 80%;
+    background: #DCE7F6;
+}
+
+.hero .wcard .wc-body i.img {
+    height: 38px;
+    background: linear-gradient(135deg, #cfe0c9, #bcd4e6);
+}
+
+.hero .tagline {
+    display: inline-block;
+    background: #EAF3E1;
+    border: 1px solid #CDE3BC;
+    color: #41662A;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 11px 16px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+}
+
+.hero .portfolio {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 11px 20px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--green);
+    color: #fff;
+    cursor: pointer;
+}
+
+.hero .portfolio:hover {
+    filter: brightness(.96);
+}
+
+.forgot-pane {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    background: var(--bg);
+    padding: 24px;
+}
+
+.forgot-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 36px 38px;
+    max-width: 460px;
+    text-align: center;
+}
+
+.forgot-card .fc-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: var(--blue-soft);
+    color: var(--blue);
+    display: grid;
+    place-items: center;
+}
+
+.forgot-card .fc-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.forgot-card h2 {
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--navy);
+    margin: 0 0 8px;
+}
+
+.forgot-card p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 18px;
+    line-height: 1.5;
+}
+
+.forgot-card input {
+    width: 100%;
+    font: inherit;
+    font-size: 14px;
+    padding: 10px 12px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    margin-bottom: 14px;
+}
+
+.forgot-card input:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px var(--blue-soft);
+}
+
+.forgot-card .fc-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.forgot-card .fc-actions button {
+    flex: 1;
+    font: inherit;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.forgot-card .fc-actions .primary {
+    border: 0;
+    background: var(--blue);
+    color: #fff;
+}
+
+.forgot-card .fc-actions .ghost {
+    background: #fff;
+    border: 1px solid var(--border-strong);
+    color: var(--navy);
+}
+
+/* ----- Empty state (abas ainda sem conteúdo) ----- */
+.empty {
+    padding: 50px 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.empty svg {
+    width: 34px;
+    height: 34px;
+    color: #C4D0DE;
+    margin-bottom: 8px;
+}
+
+/* ----- DASHBOARD: calendário ----- */
+.dash {
+    flex: 1;
+    padding: 18px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.cal-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 2px 16px;
+}
+
+.cal-head .title {
+    flex: 1;
+    text-align: center;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 19px;
+    color: var(--navy);
+}
+
+.cal-nav {
+    display: inline-flex;
+    gap: 6px;
+}
+
+.cal-nav button {
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--navy);
+    background: #fff;
+    border: 1px solid var(--border-strong);
+    border-radius: 7px;
+    padding: 7px 12px;
+    cursor: pointer;
+}
+
+.cal-nav button:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+    background: var(--blue-soft);
+}
+
+.cal {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #fff;
+    box-shadow: var(--shadow);
+}
+
+.cal .week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: var(--table-head);
+}
+
+.cal .week div {
+    padding: 10px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: .3px;
+}
+
+.cal .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.cal .day {
+    min-height: 80px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 7px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.cal .day:nth-child(7n) {
+    border-right: 0;
+}
+
+.cal .day.out {
+    background: #FAFBFD;
+    color: #C4D0DE;
+}
+
+.cal .day.today {
+    background: var(--blue-soft);
+    color: var(--blue-600);
+    font-weight: 700;
+}
+
+/* ----- OPEN ALBUM: grade de imagens ----- */
+.album-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--border);
+    background: #F6F9FD;
+}
+
+.album-bar .ab {
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: #fff;
+    display: grid;
+    place-items: center;
+    color: var(--muted);
+    cursor: pointer;
+}
+
+.album-bar .ab:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.album-bar .ab svg {
+    width: 15px;
+    height: 15px;
+}
+
+.album-grid {
+    flex: 1;
+    overflow: auto;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 14px;
+    align-content: start;
+}
+
+.album-grid .ph {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #fff;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    transition: .12s;
+}
+
+.album-grid .ph:hover {
+    box-shadow: 0 6px 20px rgba(16, 41, 66, .14);
+    transform: translateY(-2px);
+}
+
+.album-grid .ph .img {
+    height: 128px;
+    display: grid;
+    place-items: center;
+    color: rgba(255, 255, 255, .9);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.album-grid .ph .cap {
+    padding: 8px 10px;
+    font-size: 12px;
+    color: var(--navy);
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+</style>
+</head>
+<body>
+
+<div class="mock-bar">
+    <strong>e-system · Mockup (Modernizado)</strong>
+    <div class="screens">
+        <button data-s="login" onclick="setScreen('login')">Login</button>
+        <button data-s="dashboard" onclick="setScreen('dashboard')">Dashboard</button>
+        <button data-s="articles" class="active" onclick="setScreen('articles')">Articles</button>
+        <button data-s="articleform" onclick="setScreen('articleform')">Article Form</button>
+        <button data-s="newsletter" onclick="setScreen('newsletter')">Newsletter</button>
+        <button data-s="photos" onclick="setScreen('photos')">Photos</button>
+    </div>
+</div>
+
+<div class="app">
+
+    <!-- Cabeçalho: logo e-system (esq) · nome do cliente (centro) · logo atimo (dir) -->
+    <div class="topbar">
+        <div class="brand"><span class="dot">e</span> e-system</div>
+        <div class="cia">The Archdiocese of Miami</div>
+        <div class="atimo-logo" title="Logo oficial Atimo (mantido)">a</div>
+    </div>
+
+    <div class="shell">
+
+        <!-- Menu lateral (app) -->
+        <aside class="sidebar" id="sidebar-app">
+            <div class="user-card">
+                <div class="top">
+                    <div class="ua">G</div>
+                    <div>
+                        <div class="un">GABRIELA@ATIMO.US</div>
+                        <div class="ur">Web user</div>
+                    </div>
+                </div>
+                <a class="actbtn pw">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><line x1="10.85" y1="12.15" x2="19" y2="4"/><line x1="18" y1="5" x2="20" y2="7"/><line x1="15" y1="8" x2="17" y2="10"/></svg>
+                    Change Password
+                </a>
+                <a class="actbtn logout">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                    Logout
+                </a>
+            </div>
+
+            <nav class="menu" id="menu"></nav>
+
+            <div class="clock">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:13px;height:13px"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+                03:39
+            </div>
+        </aside>
+
+        <!-- Área de trabalho · Tela 1: Articles -->
+        <div class="work" id="work1">
+
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    Articles
+                    <div class="tools">
+                        <button class="btn-new" onclick="openArticleForm('edit')" title="Novo artigo (formulário)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            New
+                        </button>
+                        <button class="toggle-search" id="tgl" title="Mostrar/ocultar painel de busca">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="15" y1="4" x2="15" y2="20"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="grid-wrap">
+                    <table class="grid">
+                        <thead><tr><th>Name</th><th>Title</th><th>Category</th><th>Show</th></tr></thead>
+                        <tbody id="rows"></tbody>
+                    </table>
+                </div>
+                <div class="win-foot">
+                    <b>21,524</b>&nbsp;records in <b>979</b> pages
+                    <div class="pager">
+                        <span class="cur">1</span><span>2</span><span>3</span><span>4</span>
+                        <span>5</span><span>6</span><span>7</span><span>8</span><span>&raquo;</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Painel de busca (cantos retos) -->
+            <aside class="search" id="search">
+                <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search database</h3>
+                <div class="field"><label>Category</label>
+                    <div class="row"><select><option>=</option></select><select><option>Article Published</option></select></div>
+                </div>
+                <div class="field"><label>Name</label>
+                    <div class="row"><select><option>?*</option></select><input></div>
+                </div>
+                <div class="field"><label>Title</label>
+                    <div class="row"><select><option>?*</option></select><input></div>
+                </div>
+                <div class="field"><label>News When</label>
+                    <div class="row"><select><option>?*</option></select><input></div>
+                </div>
+                <div class="field"><label>Show</label>
+                    <div class="row"><select><option>=</option></select><select><option>Yes</option></select></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn ghost">Reset</button>
+                    <button class="btn primary">Search</button>
+                </div>
+            </aside>
+
+        </div>
+
+        <!-- Área de trabalho · Tela 2: Newsletter > Tools -->
+        <div class="work" id="work2" style="display:none">
+
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+                    Newsletter
+                    <div class="tools">
+                        <button class="toggle-search" id="tgl2" title="Mostrar/ocultar painel de listas">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="15" y1="4" x2="15" y2="20"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-body">
+                    <div class="tabs" id="nl-tabs">
+                        <button class="tab" data-pane="nl-ginfo">General Info</button>
+                        <button class="tab" data-pane="nl-groups">Groups</button>
+                        <button class="tab" data-pane="nl-message">Message</button>
+                        <button class="tab active" data-pane="nl-tools">Tools</button>
+                    </div>
+                    <div class="id-line">ID&nbsp;&nbsp;<b>Weekly Newsletter — 2026-06-17 09:19:00</b></div>
+
+                    <!-- General Info -->
+                    <div class="pane" data-pane="nl-ginfo">
+                        <div class="kv-grid">
+                            <span class="lab">Date</span><span class="val">5/28/2026</span>
+                            <span class="lab">Structure</span><span class="val">—</span>
+                            <span class="lab">Body</span><span class="val">—</span>
+                            <span class="lab">Subject</span><span class="val">Discover Our Campaigns</span>
+                            <span class="lab">From / Name</span><span class="val" style="color:#C41422">Sender List / Edmund Rice</span>
+                            <span class="lab">Reply to</span><span class="val">—</span>
+                            <span class="lab">Host / Port / SSL</span><span class="val">/ 25 / ☐</span>
+                            <span class="lab">User</span><span class="val">robson@atimo.us</span>
+                            <span class="lab">Pop3</span><span class="val">—</span>
+                            <span class="lab">Survey</span><span class="val">—</span>
+                        </div>
+                    </div>
+
+                    <!-- Groups -->
+                    <div class="pane" data-pane="nl-groups">
+                        <div class="groups-grid">
+                            <label class="grp"><input type="checkbox" checked> Group A</label>
+                            <label class="grp"><input type="checkbox"> Group G</label>
+                            <label class="grp"><input type="checkbox"> Group M</label>
+                            <label class="grp"><input type="checkbox"> Group B</label>
+                            <label class="grp"><input type="checkbox"> Group H</label>
+                            <label class="grp"><input type="checkbox"> Group N</label>
+                            <label class="grp"><input type="checkbox"> Group C</label>
+                            <label class="grp"><input type="checkbox"> Group I</label>
+                            <label class="grp"><input type="checkbox"> Group O</label>
+                            <label class="grp"><input type="checkbox"> Group D</label>
+                            <label class="grp"><input type="checkbox"> Group J</label>
+                            <label class="grp"><input type="checkbox"> Group P</label>
+                            <label class="grp"><input type="checkbox"> Group E</label>
+                            <label class="grp"><input type="checkbox"> Group K</label>
+                            <label class="grp"><input type="checkbox"> Group Q</label>
+                            <label class="grp"><input type="checkbox"> Group F</label>
+                            <label class="grp"><input type="checkbox" checked> L-Art Gallery</label>
+                            <label class="grp"><input type="checkbox"> Group R</label>
+                            <label class="grp"><input type="checkbox"> Not Assigned</label>
+                        </div>
+                        <div class="groups-meta">
+                            <span class="lab">List</span><span><a>Mailing List</a></span>
+                            <span class="lab">Filter</span><textarea placeholder="SQL filter (opcional)…"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Message (prévia do e-mail) -->
+                    <div class="pane" data-pane="nl-message">
+                        <div class="msg-preview">
+                            <div class="mp-bar">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" style="width:14px;height:14px"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+                                Prévia da newsletter — somente leitura (edição de HTML caiu em desuso)
+                            </div>
+                            <div class="mp-body">
+                                <div class="email">
+                                    <div class="pre">If you can't read this email, please view online</div>
+                                    <div class="brand">EDMUND RICE CHRISTIAN BROTHERS</div>
+                                    <div class="tag">PRESENCE · COMPASSION · LIBERATION</div>
+                                    <div class="rule"></div>
+                                    <div class="photo">[ Foto da campanha ]</div>
+                                    <h2>Honor your father and your mother, so that you may…</h2>
+                                    <p>Today we give thanks for the Edmund Rice Christian Brothers, whose fidelity and generous hearts continue to shape lives across our schools and ministries.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tools (controle de envio) -->
+                    <div class="pane active" data-pane="nl-tools">
+                        <div class="block">
+                            <div class="tools-bar">
+                                <button class="tbtn" onclick="document.getElementById('search2').classList.toggle('hidden')" title="Mostra/oculta o painel View Lists">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                                    Lists
+                                </button>
+                                <span style="flex:1"></span>
+                                <button class="tbtn" onclick="openPopup('preview')" title="Abre pop-up com a prévia da newsletter">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                                    Preview
+                                </button>
+                                <button class="tbtn active" title="Mostra as estatísticas de envio (abaixo)">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="20" x2="6" y2="13"/><line x1="12" y1="20" x2="12" y2="8"/><line x1="18" y1="20" x2="18" y2="11"/></svg>
+                                    Statistics
+                                </button>
+                                <button class="tbtn send" title="Envia a newsletter">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                                    Send
+                                </button>
+                            </div>
+                            <div class="stat-list">
+                                <div class="srow"><span class="lab">Total in list =</span><b>7,878</b></div>
+                                <div class="srow"><span class="lab">Pending =</span><b>7,878</b></div>
+                                <div class="srow"><span class="lab">Sent =</span><b>0</b></div>
+                                <div class="srow"><span class="lab">Opened =</span><b>0</b></div>
+                                <div class="srow"><span class="lab">Not confirmed =</span><a>0</a></div>
+                                <div class="srow"><span class="lab">Survey Report =</span><b>0</b></div>
+                                <div class="srow"><span class="lab">Restore not answered to Pending List =</span><a>0</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-foot">
+                    <span style="flex:1"></span>
+                    <button class="fbtn primary">Edit</button>
+                    <button class="fbtn danger">Delete</button>
+                    <button class="fbtn ghost">Duplicate</button>
+                    <button class="fbtn ghost">Close</button>
+                </div>
+            </section>
+
+            <!-- Painel direito: View Lists (Search-only) -->
+            <aside class="search" id="search2">
+                <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg> View Lists</h3>
+                <div class="field"><label>List</label>
+                    <div class="row"><select><option>=</option></select><select><option>All lists</option></select></div>
+                </div>
+                <div class="field"><label>E-mail</label>
+                    <div class="row"><select><option>?*</option></select><input></div>
+                </div>
+                <div class="field"><label>Name</label>
+                    <div class="row"><select><option>?*</option></select><input></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn ghost">Reset</button>
+                    <button class="btn primary">Search</button>
+                </div>
+                <button class="backbtn">← Back to Tools</button>
+            </aside>
+
+        </div>
+
+        <!-- Área de trabalho · Tela 3: Article Form (Visualizar / Editar) -->
+        <div class="work" id="work3" style="display:none">
+
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    Articles
+                    <div class="tools">
+                        <button class="toggle-search" onclick="document.getElementById('search3').classList.toggle('hidden')" title="Mostrar/ocultar painel de busca">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="15" y1="4" x2="15" y2="20"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-body">
+                    <div class="tabs" id="af-tabs">
+                        <button class="tab active" data-pane="af-ginfo">General Info</button>
+                        <button class="tab" data-pane="af-summary">Summary</button>
+                        <button class="tab" data-pane="af-articles">Articles</button>
+                        <button class="tab" data-pane="af-images">Images</button>
+                        <button class="tab" data-pane="af-custom">Custom</button>
+                    </div>
+
+                    <!-- General Info -->
+                    <div class="pane active" data-pane="af-ginfo">
+                        <!-- modo VISUALIZAR -->
+                        <div id="af-view">
+                            <div class="form-name">
+                                <span class="nl">Name</span>
+                                <span class="nv">A message of gratitude for your life of service</span>
+                            </div>
+                            <div class="kv-grid">
+                                <span class="lab">Category</span><span class="val">Article Published</span>
+                                <span class="lab">Title</span><span class="val">A message of gratitude for your life of service</span>
+                                <span class="lab">Subtitle</span><span class="val">—</span>
+                                <span class="lab">Date</span><span class="val">5/1/2026</span>
+                                <span class="lab">Link</span><span class="val">—</span>
+                                <span class="lab">Show</span><span class="val">Yes</span>
+                                <span class="lab">HTML</span><span class="val">Yes</span>
+                            </div>
+                        </div>
+                        <!-- modo EDITAR -->
+                        <div id="af-edit" style="display:none">
+                            <div class="form-name">
+                                <span class="nl">Name</span>
+                                <input value="A message of gratitude for your life of service">
+                            </div>
+                            <div class="kv-grid">
+                                <span class="ed-lab">Category</span>
+                                <select class="f"><option>Article Published</option><option>HTML Header</option><option>M-Home</option></select>
+                                <span class="ed-lab">Title</span><input class="f" value="A message of gratitude for your life of service">
+                                <span class="ed-lab">Subtitle</span><input class="f">
+                                <span class="ed-lab">Date</span><input class="f" value="6/17/2026 10:32:43 PM">
+                                <span class="ed-lab">Link</span><input class="f">
+                                <span class="ed-lab">Show</span>
+                                <select class="f"><option>Yes</option><option>No</option></select>
+                                <span class="ed-lab">HTML</span>
+                                <label class="check"><input type="checkbox" checked> Renderizar como HTML</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Articles (editor HTML puro) -->
+                    <div class="pane" data-pane="af-articles">
+                        <div class="form-name">
+                            <span class="nl">Name</span>
+                            <span class="nv">A message of gratitude for your life of service</span>
+                        </div>
+                        <textarea class="editor" spellcheck="false">####_C_17776699114786_####
+&lt;p&gt;Today we give thanks for the Edmund Rice Christian Brothers, men whose fidelity, generous hearts, and unwavering commitment to young people continue to shape lives across our schools and ministries.&lt;/p&gt;
+
+&lt;p&gt;On National Religious Brothers Day, which beautifully coincides with the Feast of Saint Joseph the Worker, we honor their vocation: a call to presence rooted in service.&lt;/p&gt;
+
+##GALLERY_17779555158858_GALLERY##
+
+&lt;p&gt;Like St. Joseph, they labor with humility and purpose ensuring our shared charism sustains communities of faith, compassion, and liberation.&lt;/p&gt;
+
+&lt;blockquote&gt;
+####_L_17776741615928_####
+  &lt;p&gt;&lt;strong&gt;A Word of Thanks&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;From the bottom of our hearts, thank you for your witness of faith and service.&lt;/p&gt;
+&lt;/blockquote&gt;</textarea>
+                    </div>
+
+                    <!-- abas restantes (placeholder) -->
+                    <div class="pane" data-pane="af-summary">
+                        <div class="empty">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+                            <div>Aba <b>Summary</b> — resumo/excerto do artigo</div>
+                        </div>
+                    </div>
+                    <div class="pane" data-pane="af-images">
+                        <div class="empty">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            <div>Aba <b>Images</b> — imagens vinculadas ao artigo</div>
+                        </div>
+                    </div>
+                    <div class="pane" data-pane="af-custom">
+                        <div class="empty">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6h.09A1.65 1.65 0 0 0 11 3.09V3a2 2 0 0 1 4 0v.09A1.65 1.65 0 0 0 16 4.6h.09A1.65 1.65 0 0 0 17.82 4.27l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                            <div>Aba <b>Custom</b> — campos personalizados</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- rodapé muda conforme o modo (Visualizar x Editar) -->
+                <div class="form-foot" id="af-foot-view">
+                    <span style="flex:1"></span>
+                    <button class="fbtn primary" onclick="afMode('edit')">Edit</button>
+                    <button class="fbtn danger">Delete</button>
+                    <button class="fbtn ghost">Duplicate</button>
+                    <button class="fbtn ghost" onclick="setScreen('articles')">Close</button>
+                </div>
+                <div class="form-foot" id="af-foot-edit" style="display:none">
+                    <span style="flex:1"></span>
+                    <button class="fbtn ghost" onclick="afMode('view')">Reset</button>
+                    <button class="fbtn ghost" onclick="afMode('view')">Cancel</button>
+                    <button class="fbtn primary" onclick="afMode('view')">Save</button>
+                </div>
+            </section>
+
+            <!-- Painel de busca -->
+            <aside class="search" id="search3">
+                <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search database</h3>
+                <div class="field"><label>Category</label>
+                    <div class="row"><select><option>=</option></select><select><option>Article Published</option></select></div>
+                </div>
+                <div class="field"><label>Name</label>
+                    <div class="row"><select><option>?*</option></select><input></div>
+                </div>
+                <div class="field"><label>Title</label>
+                    <div class="row"><select><option>?*</option></select><input></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn ghost">Reset</button>
+                    <button class="btn primary">Search</button>
+                </div>
+            </aside>
+
+        </div>
+
+        <!-- Sidebar de LOGIN (substitui o menu quando não logado) -->
+        <aside class="loginbox" id="sidebar-login" style="display:none">
+            <div class="lb-head">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+                Login
+            </div>
+            <div class="lb-body">
+                <div class="lf">
+                    <label>E-mail</label>
+                    <div class="inp">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21a8 8 0 1 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
+                        <select><option>gabriela@atimo.us</option></select>
+                    </div>
+                </div>
+                <div class="lf">
+                    <label>Password</label>
+                    <div class="inp">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <input type="password" value="password">
+                    </div>
+                </div>
+                <button class="login-submit" onclick="setScreen('articles')">Submit</button>
+                <a class="forgot-link" onclick="loginView('forgot')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/><circle cx="12" cy="16" r="1"/></svg>
+                    Forgot Password?
+                </a>
+            </div>
+        </aside>
+
+        <!-- Área de trabalho · LOGIN (hero + forgot) -->
+        <div class="work" id="work-login" style="display:none;padding:0">
+            <!-- hero (marketing modernizado) -->
+            <div class="hero" id="login-hero">
+                <h1>An effective website plays a key role in reflecting your image to the world.</h1>
+                <div class="props">
+                    <div class="prop">
+                        <span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        It provides a good impression, putting your best face forward.
+                    </div>
+                    <div class="prop">
+                        <span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        It is a strong component in any marketing strategy.
+                    </div>
+                    <div class="prop">
+                        <span class="pi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                        It is often your customers' first point of contact with you.
+                    </div>
+                </div>
+                <div class="cards">
+                    <div class="wcard"><div class="wc-bar"></div><div class="wc-body"><i class="img"></i><i class="wide"></i><i></i></div></div>
+                    <div class="wcard"><div class="wc-bar"></div><div class="wc-body"><i class="img"></i><i class="wide"></i><i></i></div></div>
+                    <div class="wcard"><div class="wc-bar"></div><div class="wc-body"><i class="img"></i><i class="wide"></i><i></i></div></div>
+                    <div class="wcard"><div class="wc-bar"></div><div class="wc-body"><i class="img"></i><i class="wide"></i><i></i></div></div>
+                </div>
+                <div class="tagline">Hand out a business card with a web address that you can trust.</div>
+                <div>
+                    <button class="portfolio">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><path d="M20 7h-7L11 5H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
+                        Visit our Portfolio
+                    </button>
+                </div>
+            </div>
+            <!-- forgot password -->
+            <div class="forgot-pane" id="login-forgot" style="display:none">
+                <div class="forgot-card">
+                    <div class="fc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg></div>
+                    <h2>Forgot your password?</h2>
+                    <p>Enter your e-mail address below and the system will automatically send you the information.</p>
+                    <input placeholder="your e-mail address">
+                    <div class="fc-actions">
+                        <button class="ghost" onclick="loginView('hero')">Back</button>
+                        <button class="primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Área de trabalho · Dashboard (calendário) -->
+        <div class="work" id="work-dashboard" style="display:none">
+            <div class="dash">
+                <div class="cal-head">
+                    <div class="cal-nav">
+                        <button>‹ Previous Year</button>
+                        <button>‹ Previous Month</button>
+                    </div>
+                    <div class="title">June 2026</div>
+                    <div class="cal-nav">
+                        <button>Next Month ›</button>
+                        <button>Next Year ›</button>
+                    </div>
+                </div>
+                <div class="cal">
+                    <div class="week">
+                        <div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div>
+                    </div>
+                    <div class="days" id="cal-days"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Área de trabalho · Photos (lista) -->
+        <div class="work" id="work-photos" style="display:none">
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    Photos
+                    <div class="tools">
+                        <button class="btn-new">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            New
+                        </button>
+                        <button class="toggle-search" onclick="document.getElementById('search-photos').classList.toggle('hidden')" title="Mostrar/ocultar painel de busca">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="15" y1="4" x2="15" y2="20"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="grid-wrap">
+                    <table class="grid">
+                        <thead><tr><th>Id</th><th>Type</th><th>Title</th><th>Calendar</th></tr></thead>
+                        <tbody id="photo-rows"></tbody>
+                    </table>
+                </div>
+                <div class="win-foot">
+                    <b>30</b>&nbsp;records in <b>2</b> pages
+                    <div class="pager"><span class="cur">1</span><span>2</span><span>&raquo;</span></div>
+                </div>
+            </section>
+            <aside class="search" id="search-photos">
+                <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Search database</h3>
+                <div class="field"><label>ID</label>
+                    <div class="row"><select><option>?*</option></select><input></div>
+                </div>
+                <div class="field"><label>Type</label>
+                    <div class="row"><select><option>=</option></select><select><option>Thumbnails 02</option></select></div>
+                </div>
+                <div class="field"><label>Date</label>
+                    <div class="row"><select><option>&gt;=</option></select><input placeholder="mm/dd/yyyy"></div>
+                </div>
+                <div class="field"><label>Title 1</label>
+                    <div class="row"><select><option>?*</option></select><input></div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn ghost">Reset</button>
+                    <button class="btn primary">Search</button>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Área de trabalho · Open Album (grade de imagens) -->
+        <div class="work" id="work-album" style="display:none">
+            <section class="window">
+                <div class="win-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    Photos · Album
+                    <div class="tools">
+                        <button class="btn-new" onclick="openPopup('upload')" title="Adicionar fotos">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                            Add
+                        </button>
+                        <button class="toggle-search" onclick="setScreen('photos')" title="Voltar à lista">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="album-bar">
+                    <button class="ab" title="Reordenar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="8 7 12 3 16 7"/><polyline points="8 17 12 21 16 17"/><line x1="12" y1="3" x2="12" y2="21"/></svg></button>
+                    <button class="ab" title="Renomear"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button>
+                    <button class="ab" title="Substituir"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></button>
+                    <span style="flex:1"></span>
+                    <button class="ab" title="Excluir selecionadas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+                </div>
+                <div class="album-grid" id="album-grid"></div>
+            </section>
+        </div>
+
+    </div>
+</div>
+
+<!-- ===== POP-UP (2ª janela) — Upload / Preview ===== -->
+<div class="modal-overlay" id="popup">
+    <div class="popup">
+        <div class="popup-bar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span id="popTitle">Upload to folder</span>
+            <button class="x" onclick="closePopup()">&times;</button>
+        </div>
+
+        <!-- modo UPLOAD -->
+        <div id="popUpload">
+            <div class="popup-body">
+                <div class="up-head">
+                    <span>Upload to folder</span>
+                    <select><option>Atimo_s/news</option><option>Atimo_s/events</option><option>Atimo_s/bulletins</option></select>
+                </div>
+                <div class="dropzone">
+                    <div class="cloud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 16h2a3 3 0 0 0 0-6h-.5a5 5 0 0 0-9.7-1.5A4 4 0 0 0 7 16h1"/><polyline points="9.5 13.5 12 11 14.5 13.5"/><line x1="12" y1="11" x2="12" y2="18"/></svg></div>
+                    <b>Drag &amp; drop files here</b>
+                    <span>or <a>browse</a> from your computer</span>
+                    <small>PNG, JPG, GIF or PDF · up to 10 MB each</small>
+                </div>
+                <div class="filerow">
+                    <span class="ft">JPG</span>
+                    <div style="flex:1;min-width:0">
+                        <div class="fn">parish-festival-2026.jpg</div>
+                        <div class="fs">1.8 MB · uploading…</div>
+                        <div class="bar"><i></i></div>
+                    </div>
+                    <div class="act">
+                        <button class="iconbtn" title="Preview" onclick="openPopup('preview')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></button>
+                        <button class="iconbtn rm" title="Remover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+                    </div>
+                </div>
+            </div>
+            <div class="popup-foot">
+                <button class="fbtn ghost" onclick="closePopup()">Cancel</button>
+                <button class="fbtn primary">Upload</button>
+            </div>
+        </div>
+
+        <!-- modo PREVIEW -->
+        <div id="popPreview" style="display:none">
+            <div class="popup-body">
+                <div class="preview-img">Image preview · parish-festival-2026.jpg</div>
+            </div>
+            <div class="popup-foot">
+                <button class="fbtn ghost" onclick="openPopup('upload')">← Back</button>
+                <button class="fbtn primary">Insert</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+/* ---------- ÍCONES das seções (apenas títulos) ---------- */
+const I = {
+    addressbook: '<path d="M20 22a8 8 0 1 0-16 0"/><circle cx="12" cy="9" r="4"/>',
+    events: '<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',
+    web: '<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>',
+    mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/>',
+    upload: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>',
+    uploads: '<path d="M16 16h2a3 3 0 0 0 0-6h-.5a5 5 0 0 0-9.7-1.5A4 4 0 0 0 7 16h1"/><polyline points="9.5 13.5 12 11 14.5 13.5"/><line x1="12" y1="11" x2="12" y2="18"/>'
+};
+const chev = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+
+function ic(name) {
+    return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${I[name]}</svg>`;
+}
+
+/* ---------- estrutura do menu (Customer Service e Import XLS removidos) ---------- */
+const menu = [
+    { icon: 'addressbook', title: 'Database' },
+    { icon: 'events', title: 'Events' },
+    { icon: 'web', title: 'Web Design', items: ['Menus', 'Articles', 'Photos', 'Site Map'] },
+    { icon: 'mail', title: 'Mail Center', items: ['Newsletters', 'Mailing List', 'Import Emails', 'Sender APIs'] }
+];
+const screenOfItem = { Articles: 'articles', Newsletters: 'newsletter', Photos: 'photos' };
+
+/* botões de Upload renderizados logo abaixo do menu */
+const uploadButtons = `
+    <div class="upload-actions">
+        <button class="upload" onclick="openPopup('upload')"><span class="ic">${ic('upload')}</span> Uploads</button>
+        <button class="upload" onclick="openPopup('upload')"><span class="ic">${ic('uploads')}</span> Upload Multiple Files</button>
+    </div>`;
+
+function renderMenu(openTitle, selLabel) {
+    document.getElementById('menu').innerHTML = menu.map(s => {
+        const hasItems = s.items && s.items.length;
+        const open = s.title === openTitle;
+        const head = `<div class="sect ${open ? 'open' : ''}" data-title="${s.title}">${ic(s.icon)} ${s.title}${hasItems ? chev : ''}</div>`;
+        if (!hasItems) return head;
+        const items = `<div class="items" ${open ? '' : 'style="display:none"'}>` +
+            s.items.map(it => `<a class="item ${it === selLabel ? 'sel' : ''}" data-item="${it}">${it}</a>`).join('') + `</div>`;
+        return head + items;
+    }).join('') + uploadButtons;
+
+    document.querySelectorAll('.menu .sect').forEach(h => {
+        const items = h.nextElementSibling;
+        if (items && items.classList.contains('items'))
+            h.onclick = () => {
+                const o = items.style.display !== 'none';
+                items.style.display = o ? 'none' : 'block';
+                h.classList.toggle('open', !o);
+            };
+    });
+    document.querySelectorAll('.menu .item').forEach(a => {
+        const t = screenOfItem[a.dataset.item];
+        if (t) a.onclick = () => setScreen(t);
+    });
+}
+
+/* mapa tela -> área de trabalho */
+const workOf = {
+    login: 'work-login',
+    dashboard: 'work-dashboard',
+    articles: 'work1',
+    newsletter: 'work2',
+    articleform: 'work3',
+    photos: 'work-photos',
+    album: 'work-album'
+};
+
+function setScreen(s) {
+    const isLogin = s === 'login';
+    /* alterna o sidebar (menu do app x caixa de login) */
+    document.getElementById('sidebar-app').style.display = isLogin ? 'none' : 'flex';
+    document.getElementById('sidebar-login').style.display = isLogin ? 'flex' : 'none';
+    /* mostra a área de trabalho da tela */
+    Object.values(workOf).forEach(id => document.getElementById(id).style.display = 'none');
+    document.getElementById(workOf[s]).style.display = 'flex';
+    /* destaca o botão da barra */
+    document.querySelectorAll('.screens button').forEach(b => b.classList.toggle('active', b.dataset.s === s));
+    /* menu do app conforme a tela */
+    if (s === 'articles' || s === 'articleform') renderMenu('Web Design', 'Articles');
+    else if (s === 'photos' || s === 'album') renderMenu('Web Design', 'Photos');
+    else if (s === 'newsletter') renderMenu('Mail Center', 'Newsletters');
+    else renderMenu('', '');
+    if (isLogin) loginView('hero');
+}
+
+/* ---------- abas genéricas (data-pane) ---------- */
+function wireTabs(tabsId) {
+    const tabs = document.getElementById(tabsId);
+    tabs.querySelectorAll('.tab').forEach(t => {
+        t.onclick = () => {
+            const scope = tabs.parentElement;
+            tabs.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+            t.classList.add('active');
+            scope.querySelectorAll(':scope > .pane').forEach(p =>
+                p.classList.toggle('active', p.dataset.pane === t.dataset.pane));
+        };
+    });
+}
+
+/* ---------- Article Form: modo Visualizar x Editar ---------- */
+function afMode(mode) {
+    const edit = mode === 'edit';
+    document.getElementById('af-view').style.display = edit ? 'none' : 'block';
+    document.getElementById('af-edit').style.display = edit ? 'block' : 'none';
+    document.getElementById('af-foot-view').style.display = edit ? 'none' : 'flex';
+    document.getElementById('af-foot-edit').style.display = edit ? 'flex' : 'none';
+}
+
+function openArticleForm(mode) {
+    setScreen('articleform');
+    /* volta sempre para a aba General Info */
+    document.querySelector('#af-tabs .tab').click();
+    afMode(mode || 'view');
+}
+
+/* ---------- Login: hero x forgot ---------- */
+function loginView(v) {
+    document.getElementById('login-hero').style.display = v === 'hero' ? 'block' : 'none';
+    document.getElementById('login-forgot').style.display = v === 'forgot' ? 'grid' : 'none';
+}
+
+/* ---------- cor da badge por FAMÍLIA de categoria ---------- */
+function badge(c) {
+    let k = 'b-default';
+    if (/^M-/.test(c)) k = 'b-menu';
+    else if (/^Mail -/.test(c)) k = 'b-mail';
+    else if (/^Article/.test(c)) k = 'b-article';
+    else if (/Published$/.test(c)) k = 'b-published';
+    else if (/HTML Header/.test(c)) k = 'b-html';
+    else if (/^Ajax/.test(c)) k = 'b-ajax';
+    else if (c === 'Restricted') k = 'b-restricted';
+    else if (c === 'Insert') k = 'b-insert';
+    else if (c === 'Blog' || c === 'RSS') k = 'b-blog';
+    else if (c === 'Meta Tags') k = 'b-meta';
+    else if (c === 'Miscarriage') k = 'b-misc';
+    return `<span class="badge ${k}">${c}</span>`;
+}
+const yes = '<span class="show-yes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Yes</span>';
+const no = '<span class="show-no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>No</span>';
+
+/* dados fictícios cobrindo as famílias de categoria + alguns Show=No */
+const data = [
+    ["At Installation Mass for Father David Zirilli at Nativity", "Putting God's will first", "Article Published", 1],
+    ["At Mass with University of Miami students", "Man and woman are one flesh", "Article Published", 1],
+    ["En el 20 aniversario de Matrimonios en Victoria", "La transformación en el", "Article Requested", 0],
+    ["La muerte del Papa Juan Pablo II", "La muerte del Papa Juan Pablo", "Article Published", 1],
+    ["PGC_Reports 00", "St. Vincent de Paul & Thrift S", "HTML Header", 1],
+    ["M-Home", "Home page principal", "M-Home", 1],
+    ["M-Offices & Ministries", "Offices and Ministries", "M-Offices & Ministries", 1],
+    ["Newsletter footer block", "Footer institucional", "Mail - Footer", 1],
+    ["Newsletter body template", "Corpo do e-mail", "Mail - Body", 0],
+    ["'Somos la etiqueta pegada a la botella'", "'Somos la etiqueta pegada'", "Restricted", 0],
+    ["Weekly bulletin insert", "Encarte semanal", "Insert", 1],
+    ["Parish blog — Lent reflections", "Reflexões da Quaresma", "Blog", 1],
+    ["News RSS feed", "Feed de notícias", "RSS", 1],
+    ["#iGiveCatholic kicks off the charitable season", "#iGiveCatholic kicks off the c", "Blog Published", 1],
+    ["Catholic Lens — photo essay", "Ensaio fotográfico", "Catholic Lens Published", 1],
+    ["Site meta tags / SEO", "Descrição e palavras-chave", "Meta Tags", 1],
+    ["Ajax quick-search endpoint", "Busca rápida (aberta)", "Ajax Open", 1],
+    ["Miscarriage support ministry", "Apoio ao luto", "Miscarriage", 0]
+];
+document.getElementById('rows').innerHTML = data.map(r => `
+    <tr>
+        <td class="name"><a onclick="openArticleForm('view')" title="Abrir registro">${r[0]}</a></td>
+        <td>${r[1]}</td>
+        <td>${badge(r[2])}</td>
+        <td>${r[3] ? yes : no}</td>
+    </tr>`).join('');
+
+/* toggle dos painéis (a "lupa" é um toggle, não uma pesquisa) */
+document.getElementById('tgl').onclick = () => document.getElementById('search').classList.toggle('hidden');
+document.getElementById('tgl2').onclick = () => document.getElementById('search2').classList.toggle('hidden');
+
+/* ---------- POP-UP (2ª janela) ---------- */
+function openPopup(mode) {
+    document.getElementById('popUpload').style.display = mode === 'upload' ? 'block' : 'none';
+    document.getElementById('popPreview').style.display = mode === 'preview' ? 'block' : 'none';
+    document.getElementById('popTitle').textContent = mode === 'upload' ? 'Upload to folder' : 'Image preview';
+    document.getElementById('popup').classList.add('show');
+}
+function closePopup() {
+    document.getElementById('popup').classList.remove('show');
+}
+document.getElementById('popup').onclick = e => {
+    if (e.target.id === 'popup') closePopup();
+};
+
+/* ---------- DASHBOARD: gera o calendário (June 2026) ---------- */
+(function buildCalendar() {
+    const firstDow = 0;   /* 1 Jun 2026 = segunda (col 0 com semana Mon-first) */
+    const daysInMonth = 30;
+    const today = 18;
+    let html = '';
+    for (let i = 0; i < firstDow; i++) html += '<div class="day out"></div>';
+    for (let d = 1; d <= daysInMonth; d++) {
+        html += `<div class="day ${d === today ? 'today' : ''}">${d}</div>`;
+    }
+    const total = firstDow + daysInMonth;
+    const trail = (7 - (total % 7)) % 7;
+    for (let i = 0; i < trail; i++) html += '<div class="day out"></div>';
+    document.getElementById('cal-days').innerHTML = html;
+})();
+
+/* ---------- PHOTOS: lista de registros ---------- */
+const photos = [
+    ["17779555158858", "Thumbnails 02", "Brother's Day Celebration", "5/5/2026"],
+    ["17327233057460", "Thumbnails 02", "Still Somebody - Brother Rice Chicago", "11/27/2024"],
+    ["17327256418457", "Thumbnails 02", "Still Somebody: A Global Campaign", "11/27/2024"],
+    ["17327188085006", "Thumbnails 02", "Still Somebody - Brother Rice Bloomfield", "11/27/2024"],
+    ["1718114634609", "Thumbnails 02", "Advocacy Swiper", "6/11/2024"],
+    ["16959968978672", "Thumbnails 02", "Honoring the Legacy", "9/14/2023"],
+    ["16469235668815", "Thumbnails 02", "CHAPMAN L'Armata Russa", "3/10/2022"],
+    ["16147028349142", "Thumbnails 02", "Brother Peter O'Loughlin, CFC", "3/2/2021"],
+    ["16105677682362", "Thumbnails 02", "Haiti Art Price Guide and Item Details", "1/13/2021"],
+    ["154844231526280", "Thumbnails 02", "CBArtfoundation", "1/25/2019"],
+    ["153536642532688", "Thumbnails 02", "Brother Rice High School in Michigan", "8/27/2018"],
+    ["153002699624034", "Thumbnails 02", "Kenneth", "6/26/2018"]
+];
+document.getElementById('photo-rows').innerHTML = photos.map(p => `
+    <tr>
+        <td class="name"><a onclick="setScreen('album')" title="Abrir álbum">${p[0]}</a></td>
+        <td>${p[1]}</td>
+        <td>${p[2]}</td>
+        <td>${p[3]}</td>
+    </tr>`).join('');
+
+/* ---------- OPEN ALBUM: grade de imagens (placeholders coloridos) ---------- */
+const albumGrads = [
+    'linear-gradient(135deg,#d63384,#8e2d63)',
+    'linear-gradient(135deg,#e8859b,#c25b78)',
+    'linear-gradient(135deg,#3a7d44,#75b06a)',
+    'linear-gradient(135deg,#5b8c5a,#88a07a)',
+    'linear-gradient(135deg,#2d6a9f,#5aa0c8)',
+    'linear-gradient(135deg,#b06a3a,#d99a6a)',
+    'linear-gradient(135deg,#6a5acd,#9d8ce0)',
+    'linear-gradient(135deg,#0e9384,#52b3a6)'
+];
+const albumCaps = [
+    'azalea-bush.jpg', 'dogwood-tree.jpg', 'cemetery-spring.jpg', 'stone-wall.jpg',
+    'memorial-garden.jpg', 'autumn-path.jpg', 'chapel-view.jpg', 'rose-garden.jpg'
+];
+document.getElementById('album-grid').innerHTML = albumGrads.map((g, i) => `
+    <div class="ph" onclick="openPopup('preview')">
+        <div class="img" style="background:${g}">${1280 + i * 7} × 860</div>
+        <div class="cap">${albumCaps[i]}</div>
+    </div>`).join('');
+
+/* inicialização */
+wireTabs('nl-tabs');
+wireTabs('af-tabs');
+afMode('view');
+setScreen('articles');
+</script>
+</body>
+</html>
