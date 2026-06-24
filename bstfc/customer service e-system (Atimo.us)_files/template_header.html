@@ -1,0 +1,74 @@
+
+<!-- saved from url=(0107)https://www.atimo.us/e_system_02/atimo/a10/template_header.asp?module=Customer%20Service&folder=a10&popwin= -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<title>Header</title>
+	<link rel="stylesheet" href="./styles_default.css" type="text/css">
+	<script src="./atimo_library(1).js.download" type="text/javascript"></script>
+	<script language="JavaScript" type="text/JavaScript">	
+		b_new_out 				= new Image
+		b_new_over 				= new Image
+		b_new_out.src 			= "../../images/tf_new_out.gif"
+		b_new_over.src 			= "../../images/tf_new_over.gif"
+	
+		b_search_out  			= new Image
+		b_search_over 			= new Image
+		b_search_out.src 		= "../../images/tf_search_out.gif"
+		b_search_over.src 		= "../../images/tf_search_over.gif"
+	
+		b_undock_out 			= new Image
+		b_undock_over			= new Image
+		b_undock_out.src 		= "../../images/tf_undock_out.gif"
+		b_undock_over.src 		= "../../images/tf_undock_over.gif"
+	
+		b_close_out 			= new Image
+		b_close_over			= new Image
+		b_close_out.src 		= "../../images/tf_close_out.gif"
+		b_close_over.src 		= "../../images/tf_close_over.gif"
+		
+		var v_toggle = 1; 
+		function setFrameSize() {
+			obj_frame = parent.document.getElementById("Module") ;
+			if ( v_toggle == 1 ) {
+				obj_frame.cols = "*,200";
+				v_toggle = 0;
+			} 
+			else {
+				obj_frame.cols = "*,0";
+				v_toggle = 1;
+			}
+		}
+
+		function resetFrames() {
+			parent.work_area.document.location.href = "../a10/welcome.asp"; 
+			parent.tools.document.location.href = "../a10/tools.asp"; 
+		}		
+		
+	</script>		
+	<style>
+		a {font-family: Tahoma, Arial; font-size:9pt; text-decoration:none; color:black}
+		a:visited {color: black}
+		a:hover {color: #C41422}	
+	</style>	
+<meta id="dcngeagmmhegagicpcmpinaoklddcgon"></head>
+
+<body topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0">
+	<table align="center" width="100%" height="29" cellspacing="0" cellpadding="0" border="0" background="./tf_bg.gif">
+		<tbody><tr>
+			<td width="20"><img src="./tf_lef.jpg" width="20" height="29" border="0" alt=""></td>
+			<td height="29">
+				<table height="29" cellspacing="0" cellpadding="0" border="0">
+					<tbody><tr><td><a href="javascript:resetFrames();" style="text-decoration:none;" onmouseout="status=&#39;Done&#39;; return true;" onmouseover="status=&#39;Back to the start page in the work area&#39;; return true;">- Customer Service</a>&nbsp;&nbsp;</td>
+					<td width="15"></td>
+					<td width="23"><a href="https://www.atimo.us/e_system_02/atimo/a10/new.asp" target="work_area" onmouseover="document.bt_new.src=b_new_over.src; status=&#39;New Document&#39;; return true" onmouseout="document.bt_new.src=b_new_out.src; status=&#39;Done&#39;; return true"><img src="./tf_new_out.gif" width="23" height="29" border="0" name="bt_new" alt="New Document"></a></td>
+					<td width="23"><a href="javascript:setFrameSize();" onmouseover="document.bt_search.src=b_search_over.src; status=&#39;Toggle Search Window&#39;; return true" onmouseout="document.bt_search.src=b_search_out.src; status=&#39;Done&#39;; return true"><img src="./tf_search_out.gif" width="23" height="29" border="0" name="bt_search" alt="Toggle Search Database"></a></td>
+				</tr></tbody></table>
+			</td>
+			<td width="21"><a href="javascript:newWindow(&#39;../a10/main.asp?popwin=1&#39;,&#39;a10&#39;,&#39;width=819, height=543,left=50,top=50,toolbar=no, location=no,resizable=yes, menubar=no, status=no&#39;);window.top.document.location.href=&#39;../../login/all.asp?id=BstFc&amp;action=calendar&#39;;" onmouseover="document.bt_undock.src=b_undock_over.src; status=&#39;Undock Window&#39;; return true" onmouseout="document.bt_undock.src=b_undock_out.src; status=&#39;Done&#39;; return true"><img src="./tf_undock_out.gif" width="21" height="29" border="0" name="bt_undock" alt=""></a></td>
+			<td width="2"></td>
+			<td width="21"><a href="https://www.atimo.us/e_system_02/atimo/g20/calendar.asp" target="Right_main" "="" onmouseover="document.bt_close.src=b_close_over.src; status=&#39;Close Window&#39;; return true" onmouseout="document.bt_close.src=b_close_out.src; status=&#39;Done&#39;; return true"><img src="./tf_close_out.gif" width="21" height="29" border="0" name="bt_close" alt=""></a></td>
+			<td width="6"><img src="./tf_right.jpg" width="6" height="29" border="0" alt=""></td>
+		</tr>
+	</tbody></table>
+
+
+ </body></html>

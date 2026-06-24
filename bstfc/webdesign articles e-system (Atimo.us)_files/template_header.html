@@ -1,0 +1,37 @@
+
+<!-- saved from url=(0101)https://www.atimo.us/e_system_02/atimo/library/template_header.asp?module=Articles&folder=m12&popwin= -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<title>Header</title>
+	<link rel="stylesheet" href="./styles_default.css" type="text/css">
+	<script language="JavaScript" type="text/JavaScript">
+		var v_toggle = 0;
+		function setFrameSize() {
+			obj_frame = parent.document.getElementById("Module") ;
+			if ( v_toggle == 1 ) {
+				obj_frame.cols = "*,200";
+				v_toggle = 0;
+			}
+			else {
+				obj_frame.cols = "*,0";
+				v_toggle = 1;
+			}
+		}
+
+		function resetFrames() {
+			parent.work_area.document.location.href = "../m12/welcome.asp";
+			parent.tools.document.location.href = "../m12/tools.asp";
+		}
+	</script>
+</head>
+
+<body topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0">
+	<div class="wa-header">
+		<div class="wa-title">
+			<a href="javascript:resetFrames();" onmouseout="status='Done'; return true;" onmouseover="status='Back to the start page in the work area'; return true;">Articles</a>
+		</div>
+		<div class="wa-actions">
+			<a class="wa-btn wa-new" href="https://www.atimo.us/e_system_02/atimo/m12/new.asp" target="work_area" onmouseout="status='Done'; return true" onmouseover="status='New Document'; return true" title="New Document"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>New</a>
+			<a class="wa-btn wa-search" href="javascript:setFrameSize();" onmouseout="status='Done'; return true" onmouseover="status='Toggle Search Window'; return true" title="Toggle Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="15" y1="3" x2="15" y2="21"/></svg></a>
+		</div>
+	</div>
+</body></html>
